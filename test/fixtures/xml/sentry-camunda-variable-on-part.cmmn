@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowable="http://flowable.org/schema/1.0/cmmn" id="Test" targetNamespace="http://bpmn.io/schema/cmmn">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="A CasePlanModel">
+      <cmmn:planItem id="PlanItem_1" definitionRef="Task_1">
+        <cmmn:entryCriterion id="EntryCriterion_0hxwaa2" sentryRef="Sentry_1cotuln" />
+      </cmmn:planItem>
+      <cmmn:sentry id="Sentry_1cotuln">
+        <cmmn:extensionElements>
+          <flowable:variableOnPart variableName="foo">
+            <flowable:variableEvent>create</flowable:variableEvent>
+           </flowable:variableOnPart>
+        </cmmn:extensionElements>
+      </cmmn:sentry>
+      <cmmn:task id="Task_1" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+</cmmn:definitions>

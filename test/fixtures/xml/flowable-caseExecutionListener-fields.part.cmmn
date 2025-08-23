@@ -1,0 +1,6 @@
+<flowable:caseExecutionListener xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+  event="start"
+  class="my.company.Listener" >
+  <flowable:field name="fieldOne" stringValue="myString" />
+  <flowable:field name="fieldTwo" expression="${myExpression}" />
+</flowable:caseExecutionListener>

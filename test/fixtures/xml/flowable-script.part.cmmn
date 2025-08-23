@@ -1,0 +1,4 @@
+<flowable:script xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+                scriptFormat="groovy" resource="null">
+  foo = bar;
+</flowable:script>

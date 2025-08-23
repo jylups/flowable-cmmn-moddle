@@ -1,0 +1,5 @@
+<flowable:caseExecutionListener xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+  event="complete"
+  class="my.company.Listener"
+  delegateExpression="${myExecutionListener}"
+  expression="${myExecutionListener.notify(execution)}" />

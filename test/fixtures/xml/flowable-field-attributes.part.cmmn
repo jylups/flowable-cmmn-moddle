@@ -1,0 +1,5 @@
+<flowable:field xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+  name="html"
+  expression="&lt;html&gt;&lt;body&gt;Hi!&lt;/body&gt;&lt;/html&gt;"
+  stringValue="41 is not the answer!"
+/>

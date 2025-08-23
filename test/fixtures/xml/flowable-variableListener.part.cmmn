@@ -1,0 +1,5 @@
+<flowable:variableListener xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+  event='update'
+  class='my.company.Listener'
+  delegateExpression="${myListener}"
+  expression="${myListener.notify(execution)}" />

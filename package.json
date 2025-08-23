@@ -1,0 +1,46 @@
+{
+  "name": "flowable-cmmn-moddle",
+  "version": "1.0.0",
+  "description": "Flowable moddle extensions for CMMN 1.1",
+  "scripts": {
+    "all": "run-s lint test",
+    "lint": "eslint .",
+    "dev": "npm test -- --watch",
+    "test": "mocha -r esm -r ./test/expect --reporter=spec --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jylups/flowable-cmmn-moddle"
+  },
+  "keywords": [
+    "cmmn",
+    "moddle",
+    "cmmn11",
+    "flowable",
+    "meta-model"
+  ],
+  "author": {
+    "name": "Jorge Carvallo",
+    "url": "https://github.com/jylups"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "async": "^1.5.0",
+    "chai": "^4.1.2",
+    "cmmn-moddle": "^5.0.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-bpmn-io": "^0.5.2",
+    "esm": "^3.0.15",
+    "glob": "^7.1.2",
+    "jsondiffpatch": "^0.1.4",
+    "mocha": "^5.0.0",
+    "npm-run-all": "^4.1.2",
+    "xsd-schema-validator": "^0.6.0"
+  }
+}

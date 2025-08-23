@@ -1,0 +1,5 @@
+<processTask xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL"
+              xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+              flowable:processBinding="foo"
+              flowable:processVersion="1"
+              flowable:processTenantId="bar" />

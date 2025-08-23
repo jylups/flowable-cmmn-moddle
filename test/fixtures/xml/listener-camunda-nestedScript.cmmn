@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowable="http://flowable.org/schema/1.0/cmmn" id="Test" targetNamespace="http://bpmn.io/schema/cmmn">
+  <cmmn:case id="Case_1">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="A CasePlanModel">
+      <cmmn:planItem id="PlanItem_0a8yyi5" definitionRef="HumanTask_0o9yifz" flowable:formKey="foo" />
+      <cmmn:humanTask id="HumanTask_0o9yifz">
+        <cmmn:extensionElements>
+          <flowable:caseExecutionListener event="complete">
+            <flowable:script scriptFormat="javascript">return a === b;</flowable:script>
+          </flowable:caseExecutionListener>
+        </cmmn:extensionElements>
+      </cmmn:humanTask>
+    </cmmn:casePlanModel>
+  </cmmn:case>
+</cmmn:definitions>

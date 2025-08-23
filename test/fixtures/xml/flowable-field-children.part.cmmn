@@ -1,0 +1,4 @@
+<flowable:field xmlns:flowable="http://flowable.org/schema/1.0/cmmn" name="html">
+  <flowable:expression><![CDATA[<html><body>Hi!</body></html>]]></flowable:expression>
+  <flowable:string>42 is the answer!</flowable:string>
+</flowable:field>
