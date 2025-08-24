@@ -13,7 +13,8 @@
     "all": "run-s lint test",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r esm -r ./test/expect --reporter=spec --recursive test"
+    "test": "mocha -r esm -r ./test/expect --reporter=spec --recursive test",
+    "test:node16": "mocha -r esm -r ./test/expect --reporter=spec --recursive test"
   },
   "repository": {
     "type": "git",

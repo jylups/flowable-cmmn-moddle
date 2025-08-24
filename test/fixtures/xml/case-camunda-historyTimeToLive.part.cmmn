@@ -1,3 +1,0 @@
-<case xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL"
-      xmlns:flowable="http://flowable.org/cmmn"
-      flowable:historyTimeToLive="foo" />
