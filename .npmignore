@@ -8,6 +8,7 @@ test/
 .travis.yml
 .nyc_output/
 coverage/
+.eslintrc
 
 # Documentation that's not needed in package
 docs/

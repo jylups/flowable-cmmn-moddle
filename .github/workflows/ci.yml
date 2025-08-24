@@ -22,7 +22,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
         
     - name: Setup Java (for XSD validation)
       uses: actions/setup-java@v4
@@ -30,8 +29,21 @@ jobs:
         distribution: 'temurin'
         java-version: '11'
         
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
     - name: Install dependencies
-      run: npm ci
+      run: |
+        if [ -f package-lock.json ]; then
+          npm ci
+        else
+          npm install
+        fi
       
     - name: Run linter
       run: npm run lint
