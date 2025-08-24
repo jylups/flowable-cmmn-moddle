@@ -275,6 +275,7 @@
     },
     {
       "name": "Script",
+      "superClass": [ "Element" ],
       "properties": [
         {
           "name": "scriptFormat",
@@ -411,7 +412,7 @@
     },
     {
       "name": "CasePlanModel",
-      "extends": [ "cmmn:CasePlanModel" ],
+      "extends": [ "cmmn:Stage" ],
       "properties": [
         {
           "name": "formKey",
@@ -426,5 +427,5 @@
       ]
     }
   ],
-  "emumerations": [ ]
+  "enumerations": [ ]
 }
