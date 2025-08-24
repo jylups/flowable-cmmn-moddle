@@ -2,6 +2,13 @@
   "name": "flowable-cmmn-moddle",
   "version": "1.0.0",
   "description": "Flowable moddle extensions for CMMN 1.1",
+  "main": "resources/flowable.json",
+  "files": [
+    "resources/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "all": "run-s lint test",
     "lint": "eslint .",
@@ -10,14 +17,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jylups/flowable-cmmn-moddle"
+    "url": "https://github.com/jylups/flowable-cmmn-moddle.git"
+  },
+  "homepage": "https://github.com/jylups/flowable-cmmn-moddle#readme",
+  "bugs": {
+    "url": "https://github.com/jylups/flowable-cmmn-moddle/issues"
   },
   "keywords": [
     "cmmn",
     "moddle",
     "cmmn11",
     "flowable",
-    "meta-model"
+    "meta-model",
+    "workflow",
+    "business-process",
+    "case-management"
   ],
   "author": {
     "name": "Jorge Carvallo",
@@ -30,6 +44,9 @@
     }
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "async": "^1.5.0",
     "chai": "^4.1.2",
