@@ -16,6 +16,21 @@
           "name": "historyTimeToLive",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "initiatorVariableName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "candidateStarterUsers",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "candidateStarterGroups",
+          "isAttr": true,
+          "type": "String"
         }
       ]
     },
@@ -82,6 +97,11 @@
           "name": "formKey",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "formFieldValidation",
+          "isAttr": true,
+          "type": "String"
         }
       ]
     },
@@ -91,6 +111,11 @@
       "properties": [
         {
           "name": "assignee",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "owner",
           "isAttr": true,
           "type": "String"
         },
@@ -116,6 +141,21 @@
         },
         {
           "name": "priority",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "category",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "taskIdVariableName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "taskCompleterVariableName",
           "isAttr": true,
           "type": "String"
         }
@@ -197,6 +237,18 @@
           "name": "processVersion",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "fallbackToDefaultTenant",
+          "isAttr": true,
+          "type": "Boolean",
+          "default": false
+        },
+        {
+          "name": "sameDeployment",
+          "isAttr": true,
+          "type": "Boolean",
+          "default": true
         }
       ]
     },
@@ -208,11 +260,22 @@
           "name": "repeatOnStandardEvent",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "counterVariable",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "maxInstanceCount",
+          "isAttr": true,
+          "type": "String"
         }
       ]
     },
     {
       "name": "Script",
+      "superClass": [ "Element" ],
       "properties": [
         {
           "name": "scriptFormat",
@@ -324,7 +387,45 @@
           "isAttr": true
         }
       ]
+    },
+    {
+      "name": "Milestone",
+      "extends": [ "cmmn:Milestone" ],
+      "properties": [
+        {
+          "name": "milestoneVariable",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ExitCriterion",
+      "extends": [ "cmmn:ExitCriterion" ],
+      "properties": [
+        {
+          "name": "exitEventType",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "CasePlanModel",
+      "extends": [ "cmmn:Stage" ],
+      "properties": [
+        {
+          "name": "formKey",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "formFieldValidation",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
     }
   ],
-  "emumerations": [ ]
+  "enumerations": [ ]
 }

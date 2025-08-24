@@ -31,8 +31,8 @@ const modeler = new CmmnModeler({
 
 ```javascript
 import CmmnModeler from 'cmmn-js/lib/Modeler';
-import propertiesPanelModule from 'cmmn-js-properties-panel';
-import propertiesProviderModule from 'cmmn-js-properties-panel/lib/provider/flowable';
+import propertiesPanelModule from 'cmmn-js-properties-panel-flowable';
+import propertiesProviderModule from 'cmmn-js-properties-panel-flowable/lib/provider/flowable';
 import flowableDescriptor from 'flowable-cmmn-moddle/resources/flowable';
 
 const modeler = new CmmnModeler({

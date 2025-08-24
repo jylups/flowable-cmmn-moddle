@@ -1,6 +1,6 @@
 {
   "name": "flowable-cmmn-moddle",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Flowable moddle extensions for CMMN 1.1",
   "main": "resources/flowable.json",
   "files": [
