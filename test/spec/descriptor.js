@@ -11,7 +11,7 @@ describe('descriptor', function() {
     // then
     expect(flowableDescriptor).to.exist;
 
-    expect(flowableDescriptor.uri).to.eql('http://flowable.org/schema/1.0/cmmn');
+    expect(flowableDescriptor.uri).to.eql('http://flowable.org/cmmn');
     expect(flowableDescriptor.prefix).to.eql('flowable');
   });
 

@@ -1,4 +1,4 @@
-<flowable:in xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+<flowable:in xmlns:flowable="http://flowable.org/cmmn"
             sourceExpression="fooExp"
             source="foo"
             target="bar"

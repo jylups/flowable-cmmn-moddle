@@ -1,4 +1,4 @@
-<flowable:taskListener xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+<flowable:taskListener xmlns:flowable="http://flowable.org/cmmn"
   event='create'
   class='my.company.Listener'
   delegateExpression="${myTaskListener}"

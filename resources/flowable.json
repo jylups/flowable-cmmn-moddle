@@ -1,6 +1,6 @@
 {
   "name": "Flowable",
-  "uri": "http://flowable.org/schema/1.0/cmmn",
+  "uri": "http://flowable.org/cmmn",
   "prefix": "flowable",
   "xml": {
     "tagAlias": "lowerCase"

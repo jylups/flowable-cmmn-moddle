@@ -1,4 +1,4 @@
-<flowable:variableOnPart xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+<flowable:variableOnPart xmlns:flowable="http://flowable.org/cmmn"
   variableName="foo">
   <flowable:variableEvent>create</flowable:variableEvent>
 </flowable:variableOnPart>

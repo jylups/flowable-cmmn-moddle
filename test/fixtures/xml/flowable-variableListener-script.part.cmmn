@@ -1,4 +1,4 @@
-<flowable:variableListener xmlns:flowable="http://flowable.org/schema/1.0/cmmn"
+<flowable:variableListener xmlns:flowable="http://flowable.org/cmmn"
                            event="update">
   <flowable:script scriptFormat="groovy">
     foo = bar;
