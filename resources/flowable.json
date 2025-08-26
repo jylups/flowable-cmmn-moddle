@@ -425,6 +425,38 @@
           "type": "String"
         }
       ]
+    },
+    {
+      "name": "default-menu-navigation-size",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "owner",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "assignee",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "work-form-field-validation",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "task-candidates-type",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "manual-activation-name",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "manual-activation-icon",
+      "superClass": [ "Element" ]
+    },
+    {
+      "name": "docker",
+      "superClass": [ "Element" ]
     }
   ],
   "enumerations": [ ]
