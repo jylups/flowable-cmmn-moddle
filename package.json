@@ -13,8 +13,7 @@
     "all": "run-s lint test",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r esm -r ./test/expect --reporter=spec --recursive test",
-    "test:node16": "mocha -r esm -r ./test/expect --reporter=spec --recursive test"
+    "test": "mocha -r ./test/register -r ./test/expect --reporter=spec --recursive test"
   },
   "repository": {
     "type": "git",
@@ -49,12 +48,14 @@
     "access": "public"
   },
   "devDependencies": {
+    "@babel/core": "^8.1.2",
+    "@babel/preset-env": "^8.0.7",
+    "@babel/register": "^8.1.2",
     "async": "^1.5.0",
     "chai": "^4.1.2",
     "cmmn-moddle": "^5.0.0",
     "eslint": "^4.19.1",
     "eslint-plugin-bpmn-io": "^0.5.2",
-    "esm": "^3.0.15",
     "glob": "^7.1.2",
     "jsondiffpatch": "^0.1.4",
     "mocha": "^5.0.0",
