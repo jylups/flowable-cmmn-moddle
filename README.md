@@ -151,6 +151,32 @@ npm test
 npm run lint
 ```
 
+### Load-and-save report
+
+Checks which parts of real Flowable models survive loading and saving with
+this descriptor. It runs over the CMMN models in the
+[Flowable engine](https://github.com/flowable/flowable-engine) repository
+(Apache-2.0) and the full documents in `test/fixtures/xml`:
+
+```bash
+npm run roundtrip:fetch   # sparse checkout of the Flowable models into .flowable-models
+npm run roundtrip         # writes roundtrip-report.md and roundtrip-report.json
+```
+
+Each model is imported with cmmn-moddle and this descriptor, exported again,
+and both XML documents are compared as namespace-resolved trees. Namespace
+prefixes, element order, whitespace, number formatting and attributes that
+hold their default value are not reported. Differences are grouped by kind,
+for example `dropped-element cmmn:extensionElements > flowable:eventType`.
+
+`test/roundtrip/known-losses.json` lists the known differences, each with the
+issue that tracks it. The report exits with 1 when it finds a difference that
+is not in that list, so CI catches new losses. When a loss is fixed, the
+report lists it under "No longer found"; remove it from the list, or run
+`npm run roundtrip -- --update-baseline` to rewrite the list (issue links of
+remaining entries are kept). Set `FLOWABLE_ENGINE_REF` to fetch the models of
+another Flowable commit.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

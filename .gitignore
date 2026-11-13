@@ -1,2 +1,7 @@
 node_modules
 package-lock.json
+# Flowable engine models fetched by scripts/fetch-flowable-models.sh
+.flowable-models
+
+# Load-and-save report output
+roundtrip-report.*

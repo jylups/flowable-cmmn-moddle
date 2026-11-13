@@ -53,3 +53,21 @@ jobs:
       
     - name: Run all checks
       run: npm run all
+
+    # Load-and-save report over the Flowable engine's CMMN models; fails on a
+    # difference that is not in test/roundtrip/known-losses.json
+    - name: Fetch Flowable engine models
+      if: matrix.node-version == 26
+      run: npm run roundtrip:fetch
+
+    - name: Load-and-save report
+      if: matrix.node-version == 26
+      run: npm run roundtrip
+
+    - name: Upload load-and-save report
+      if: always() && matrix.node-version == 26
+      uses: actions/upload-artifact@v4
+      with:
+        name: roundtrip-report
+        path: roundtrip-report.*
+        if-no-files-found: ignore
