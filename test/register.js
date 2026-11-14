@@ -3,7 +3,7 @@
 /* global require */
 
 // Compiles ES module sources to CommonJS so mocha can load them: this
-// package's own sources and the cmmn-moddle, moddle and moddle-xml
+// package's own sources and the @jylups/cmmn-moddle, moddle and moddle-xml
 // dependencies, which are published as ES module source only.
 //
 // A file is compiled when its path has no node_modules folder, or when the
@@ -13,7 +13,7 @@
 var NO_NODE_MODULES = /^(?!.*[\\/]node_modules[\\/])/;
 
 var ESM_DEPENDENCY =
-  /[\\/]node_modules[\\/](cmmn-moddle|moddle|moddle-xml)[\\/](?!.*[\\/]node_modules[\\/])/;
+  /[\\/]node_modules[\\/](@jylups[\\/]cmmn-moddle|moddle|moddle-xml)[\\/](?!(.*[\\/])?node_modules[\\/])/;
 
 require('@babel/register').default({
   babelrc: false,

@@ -10,7 +10,7 @@ function readFile(filename) {
 module.exports.readFile = readFile;
 
 
-var CmmnModdle = require('cmmn-moddle').default;
+var CmmnModdle = require('@jylups/cmmn-moddle').default;
 
 var flowableDescriptor = require('../resources/flowable');
 
