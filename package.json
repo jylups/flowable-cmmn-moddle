@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jylups/flowable-cmmn-moddle.git"
+    "url": "git+https://github.com/jylups/flowable-cmmn-moddle.git"
   },
   "homepage": "https://github.com/jylups/flowable-cmmn-moddle#readme",
   "bugs": {
