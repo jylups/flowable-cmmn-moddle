@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/flowable-cmmn-moddle.svg)](https://badge.fury.io/js/flowable-cmmn-moddle)
 [![CI](https://github.com/jylups/flowable-cmmn-moddle/actions/workflows/ci.yml/badge.svg)](https://github.com/jylups/flowable-cmmn-moddle/actions/workflows/ci.yml)
 
-Flowable moddle extensions for CMMN 1.1. This package provides Flowable-specific extensions for [cmmn-moddle](https://github.com/bpmn-io/cmmn-moddle), enabling support for Flowable's custom CMMN elements and attributes in [cmmn-js](https://github.com/bpmn-io/cmmn-js) based applications.
+Flowable moddle extensions for CMMN 1.1. This package provides Flowable-specific extensions for [@jylups/cmmn-moddle](https://github.com/jylups/cmmn-moddle), enabling support for Flowable's custom CMMN elements and attributes in [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) based applications.
 
 ## Installation
 
@@ -16,7 +16,7 @@ npm install flowable-cmmn-moddle
 ### With cmmn-js
 
 ```javascript
-import CmmnModeler from 'cmmn-js/lib/Modeler';
+import CmmnModeler from '@jylups/cmmn-js/lib/Modeler';
 import flowableDescriptor from 'flowable-cmmn-moddle/resources/flowable';
 
 const modeler = new CmmnModeler({
@@ -30,7 +30,7 @@ const modeler = new CmmnModeler({
 ### With cmmn-js Properties Panel
 
 ```javascript
-import CmmnModeler from 'cmmn-js/lib/Modeler';
+import CmmnModeler from '@jylups/cmmn-js/lib/Modeler';
 import propertiesPanelModule from 'cmmn-js-properties-panel-flowable';
 import propertiesProviderModule from 'cmmn-js-properties-panel-flowable/lib/provider/flowable';
 import flowableDescriptor from 'flowable-cmmn-moddle/resources/flowable';
@@ -131,8 +131,8 @@ Example CMMN XML with Flowable extensions:
 ## Development
 
 ### Prerequisites
-- Node.js 16+ 
-- npm or yarn
+- Node.js 24 or later (the tests use Babel 8, which needs Node 22.18 or later; CI runs on Node 24 and 26)
+- npm
 
 ### Setup
 ```bash
@@ -163,7 +163,7 @@ npm run roundtrip:fetch   # sparse checkout of the Flowable models into .flowabl
 npm run roundtrip         # writes roundtrip-report.md and roundtrip-report.json
 ```
 
-Each model is imported with cmmn-moddle and this descriptor, exported again,
+Each model is imported with @jylups/cmmn-moddle and this descriptor, exported again,
 and both XML documents are compared as namespace-resolved trees. Namespace
 prefixes, element order, whitespace, number formatting and attributes that
 hold their default value are not reported. Differences are grouped by kind,
@@ -193,8 +193,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Related Projects
 
-- [cmmn-js](https://github.com/bpmn-io/cmmn-js) - CMMN 1.1 modeling for the web
-- [cmmn-moddle](https://github.com/bpmn-io/cmmn-moddle) - CMMN 1.1 meta-model
+- [@jylups/cmmn-js](https://github.com/jylups/cmmn-js) - CMMN 1.1 modeling for the web, a maintained fork of [bpmn-io/cmmn-js](https://github.com/bpmn-io/cmmn-js)
+- [@jylups/cmmn-moddle](https://github.com/jylups/cmmn-moddle) - CMMN 1.1 meta-model, a maintained fork of [bpmn-io/cmmn-moddle](https://github.com/bpmn-io/cmmn-moddle)
 - [Flowable](https://github.com/flowable/flowable-engine) - Open source business process engine
 
 ## Acknowledgments
