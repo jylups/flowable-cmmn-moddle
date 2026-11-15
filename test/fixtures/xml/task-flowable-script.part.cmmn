@@ -1,0 +1,1 @@
+<task xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="Task_Script" flowable:type="script" flowable:resultVariableName="scriptResult" flowable:scriptFormat="groovy" flowable:autoStoreVariables="false" flowable:doNotIncludeVariables="true" />

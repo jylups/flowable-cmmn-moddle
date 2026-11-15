@@ -24,6 +24,10 @@
     "dropped-attribute cmmndi:CMMNEdge@targetCMMNElementRef": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
     },
+    "dropped-attribute cmmn:processTask@flowable:fallbackToDefaultTenant": {
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/44",
+      "note": "Accepted: the model binds the flowable prefix to the BPMN namespace, which Flowable ignores in a case model; the attribute cannot be written next to the Flowable CMMN namespace. Hidden before by the default false of the descriptor"
+    },
     "dropped-attribute flowable:taskListener@flowable:class": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16",
       "note": "Accepted: the writer always writes an attribute of the element's own namespace without its prefix; Flowable reads both"

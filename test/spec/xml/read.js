@@ -1,3 +1,5 @@
+/* global Promise */
+
 'use strict';
 
 
@@ -205,6 +207,210 @@ describe('read', function() {
           processBinding: 'foo',
           processVersion: '1',
           processTenantId: 'bar'
+        });
+      });
+
+    });
+
+
+    describe('task attributes', function() {
+
+      function read(name, typeName) {
+        return moddle.fromXML(readFile('test/fixtures/xml/' + name + '.part.cmmn'), typeName);
+      }
+
+
+      it('java task with class, async and form', function() {
+
+        // when
+        return read('task-flowable-java', 'cmmn:Task').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:Task',
+            id: 'Task_Java',
+            async: true,
+            exclusive: false,
+            asyncLeave: true,
+            asyncLeaveExclusive: true,
+            isBlockingExpression: '${blocking}',
+            type: 'java',
+            'class': 'org.example.Delegate',
+            resultVariableName: 'result',
+            storeResultVariableAsTransient: true,
+            formKey: 'javaForm',
+            formFieldValidation: 'false'
+          });
+        });
+      });
+
+
+      it('java task with expression or delegate expression', function() {
+
+        // when
+        return Promise.all([
+          read('task-flowable-expression', 'cmmn:Task'),
+          read('task-flowable-delegateExpression', 'cmmn:Task')
+        ]).then(function(results) {
+
+          // then
+          expect(results[0].rootElement.get('flowable:expression')).to.eql('${bean.run(planItemInstance)}');
+          expect(results[1].rootElement.get('flowable:delegateExpression')).to.eql('${delegate}');
+        });
+      });
+
+
+      it('script task', function() {
+
+        // when
+        return read('task-flowable-script', 'cmmn:Task').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:Task',
+            id: 'Task_Script',
+            type: 'script',
+            resultVariableName: 'scriptResult',
+            scriptFormat: 'groovy',
+            autoStoreVariables: false,
+            doNotIncludeVariables: true
+          });
+        });
+      });
+
+
+      it('external worker and HTTP tasks', function() {
+
+        // when
+        return Promise.all([
+          read('task-flowable-external-worker', 'cmmn:Task'),
+          read('task-flowable-http', 'cmmn:Task')
+        ]).then(function(results) {
+
+          // then
+          expect(results[0].warnings).to.be.empty;
+          expect(results[0].rootElement).to.jsonEqual({
+            $type: 'cmmn:Task',
+            id: 'Task_Worker',
+            type: 'external-worker',
+            doNotIncludeVariables: true,
+            topic: 'orderService'
+          });
+
+          expect(results[1].warnings).to.be.empty;
+          expect(results[1].rootElement).to.jsonEqual({
+            $type: 'cmmn:Task',
+            id: 'Task_Http',
+            type: 'http',
+            'class': 'org.example.HttpBehavior',
+            parallelInSameTransaction: true
+          });
+        });
+      });
+
+
+      it('case page task', function() {
+
+        // when
+        return read('task-flowable-casePage', 'cmmn:Task').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:Task',
+            id: 'Task_Page',
+            sameDeployment: false,
+            type: 'casePage',
+            formKey: 'pageKey',
+            assignee: '${initiator}',
+            owner: 'janedoe',
+            candidateUsers: 'johndoe,janedoe',
+            candidateGroups: 'sales,management',
+            label: 'Overview',
+            icon: 'dashboard'
+          });
+        });
+      });
+
+
+      it('human task with the attributes of all tasks', function() {
+
+        // when
+        return read('humanTask-flowable-task-attributes', 'cmmn:HumanTask').then(function(result) {
+          var task = result.rootElement;
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(task).to.jsonEqual({
+            $type: 'cmmn:HumanTask',
+            id: 'HumanTask_1',
+            async: true,
+            exclusive: true,
+            sameDeployment: false,
+            formKey: 'taskForm',
+            assignee: 'kermit',
+            priority: '50'
+          });
+
+          expect(task.$instanceOf('flowable:Assignable')).to.be.true;
+          expect(task.$instanceOf('flowable:FormSupported')).to.be.true;
+        });
+      });
+
+
+      it('process and case tasks with the attributes of child tasks', function() {
+
+        // when
+        return Promise.all([
+          read('processTask-flowable-child', 'cmmn:ProcessTask'),
+          read('caseTask-flowable-child', 'cmmn:CaseTask')
+        ]).then(function(results) {
+
+          // then
+          expect(results[0].warnings).to.be.empty;
+          expect(results[0].rootElement).to.jsonEqual({
+            $type: 'cmmn:ProcessTask',
+            id: 'ProcessTask_1',
+            sameDeployment: true,
+            businessKey: '${businessKey}',
+            inheritBusinessKey: true,
+            inheritVariables: true,
+            idVariableName: 'processIdVariable',
+            fallbackToDefaultTenant: true,
+            processBinding: 'deployment'
+          });
+
+          expect(results[1].warnings).to.be.empty;
+          expect(results[1].rootElement).to.jsonEqual({
+            $type: 'cmmn:CaseTask',
+            id: 'CaseTask_1',
+            sameDeployment: false,
+            businessKey: 'childKey',
+            inheritBusinessKey: false,
+            inheritVariables: true,
+            idVariableName: 'caseIdVariable',
+            fallbackToDefaultTenant: false
+          });
+        });
+      });
+
+
+      it('no assignment or form markers on other tasks', function() {
+
+        // when
+        return read('task-flowable-casePage', 'cmmn:Task').then(function(result) {
+          var task = result.rootElement;
+
+          // then
+          expect(task.$instanceOf('flowable:Task')).to.be.true;
+          expect(task.$instanceOf('flowable:Assignable')).to.be.false;
+          expect(task.$instanceOf('flowable:FormSupported')).to.be.false;
         });
       });
 

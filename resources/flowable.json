@@ -87,12 +87,95 @@
       ]
     },
     {
-      "name": "FormSupported",
+      "name": "Task",
       "isAbstract": true,
-      "extends": [
-        "cmmn:HumanTask"
-      ],
+      "extends": [ "cmmn:Task" ],
       "properties": [
+        {
+          "name": "async",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "exclusive",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "asyncLeave",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "asyncLeaveExclusive",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "isBlockingExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sameDeployment",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "class",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "expression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "delegateExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "resultVariableName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "storeResultVariableAsTransient",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "scriptFormat",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "autoStoreVariables",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "doNotIncludeVariables",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "topic",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "parallelInSameTransaction",
+          "isAttr": true,
+          "type": "Boolean"
+        },
         {
           "name": "formKey",
           "isAttr": true,
@@ -102,13 +185,7 @@
           "name": "formFieldValidation",
           "isAttr": true,
           "type": "String"
-        }
-      ]
-    },
-    {
-      "name": "Assignable",
-      "extends": [ "cmmn:HumanTask" ],
-      "properties": [
+        },
         {
           "name": "assignee",
           "isAttr": true,
@@ -129,6 +206,61 @@
           "isAttr": true,
           "type": "String"
         },
+        {
+          "name": "label",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "icon",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ChildTask",
+      "isAbstract": true,
+      "extends": [ "cmmn:CaseTask", "cmmn:ProcessTask" ],
+      "properties": [
+        {
+          "name": "businessKey",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "inheritBusinessKey",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "inheritVariables",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "idVariableName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "fallbackToDefaultTenant",
+          "isAttr": true,
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "FormSupported",
+      "isAbstract": true,
+      "extends": [
+        "cmmn:HumanTask"
+      ]
+    },
+    {
+      "name": "Assignable",
+      "extends": [ "cmmn:HumanTask" ],
+      "properties": [
         {
           "name": "dueDate",
           "isAttr": true,
@@ -237,18 +369,6 @@
           "name": "processVersion",
           "isAttr": true,
           "type": "String"
-        },
-        {
-          "name": "fallbackToDefaultTenant",
-          "isAttr": true,
-          "type": "Boolean",
-          "default": false
-        },
-        {
-          "name": "sameDeployment",
-          "isAttr": true,
-          "type": "Boolean",
-          "default": true
         }
       ]
     },

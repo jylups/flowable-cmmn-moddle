@@ -1,0 +1,1 @@
+<humanTask xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="HumanTask_1" flowable:async="true" flowable:exclusive="true" flowable:sameDeployment="false" flowable:formKey="taskForm" flowable:assignee="kermit" flowable:priority="50" />

@@ -1,0 +1,1 @@
+<task xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="Task_Http" flowable:type="http" flowable:class="org.example.HttpBehavior" flowable:parallelInSameTransaction="true" />

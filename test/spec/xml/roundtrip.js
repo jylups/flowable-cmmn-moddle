@@ -46,6 +46,36 @@ describe('import -> export roundtrip', function() {
 
     it('flowable:VariableOnPart', validateExport('test/fixtures/xml/sentry-flowable-variable-on-part.cmmn'));
 
+
+    describe('of tasks', function() {
+
+      function validateTask(name, typeName) {
+        return validateExport('test/fixtures/xml/' + name + '.part.cmmn', typeName);
+      }
+
+      it('java task', validateTask('task-flowable-java', 'cmmn:Task'));
+
+      it('java task with expression', validateTask('task-flowable-expression', 'cmmn:Task'));
+
+      it('java task with delegate expression', validateTask('task-flowable-delegateExpression', 'cmmn:Task'));
+
+      it('script task', validateTask('task-flowable-script', 'cmmn:Task'));
+
+      it('external worker task', validateTask('task-flowable-external-worker', 'cmmn:Task'));
+
+      it('HTTP task', validateTask('task-flowable-http', 'cmmn:Task'));
+
+      it('case page task', validateTask('task-flowable-casePage', 'cmmn:Task'));
+
+      it('human task', validateTask('humanTask-flowable-task-attributes', 'cmmn:HumanTask'));
+
+      // sameDeployment="true" was dropped while the descriptor declared it as default
+      it('process task', validateTask('processTask-flowable-child', 'cmmn:ProcessTask'));
+
+      it('case task', validateTask('caseTask-flowable-child', 'cmmn:CaseTask'));
+
+    });
+
   });
 
 
