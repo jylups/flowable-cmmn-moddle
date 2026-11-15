@@ -1,0 +1,4 @@
+<flowable:field xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" name="html">
+  <expression>${greeting + name}</expression>
+  <string>42 is the answer!</string>
+</flowable:field>
