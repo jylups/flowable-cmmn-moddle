@@ -68,6 +68,8 @@ describe('import -> export roundtrip', function() {
 
     it('condition', validateExtensions('flowable-condition'));
 
+    it('elements without a type, as generic elements', validateExtensions('flowable-unknown-elements'));
+
   });
 
 

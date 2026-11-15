@@ -1,97 +1,10 @@
 {
   "losses": {
-    "dropped-element cmmn:extensionElements > flowable:work-form-field-validation": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:start-form-field-validation": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:task-candidates-type": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:default-menu-navigation-size": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:historyLevel": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:channelKey": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:static-case-key": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:jobCategory": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:includeInHistory": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:nestedTest": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:startformkey": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:startFormSameDeployment": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:taskTest": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:testEntry": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:customElement": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:milestoneTest": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:systemChannel": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:test": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
     "dropped-element cmmn:exitCriterion > cmmn:planItemOnPart": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
     },
-    "dropped-element cmmn:extensionElements > flowable:customValue": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:event-listener-name": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:index": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:mapException": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:overwrite": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:planItemTest": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:sentryTest": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:state-rendering": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:test2": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:testValue": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:translation": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
     "dropped-attribute cmmn:task@flowable:fromKey": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/43"
     },
     "dropped-attribute cmmndi:CMMNShape@cmmnElementRef": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
@@ -112,16 +25,20 @@
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
     },
     "dropped-attribute flowable:taskListener@flowable:class": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/16",
+      "note": "Accepted: the writer always writes an attribute of the element's own namespace without its prefix; Flowable reads both"
     },
     "added-attribute flowable:taskListener@class": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/16",
+      "note": "Accepted: the writer always writes an attribute of the element's own namespace without its prefix; Flowable reads both"
     },
     "dropped-attribute flowable:planItemLifecycleListener@flowable:class": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/16",
+      "note": "Accepted: the writer always writes an attribute of the element's own namespace without its prefix; Flowable reads both"
     },
     "added-attribute flowable:planItemLifecycleListener@class": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/16",
+      "note": "Accepted: the writer always writes an attribute of the element's own namespace without its prefix; Flowable reads both"
     }
   }
 }

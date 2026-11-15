@@ -1,0 +1,9 @@
+<cmmn:extensionElements xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:work-form-field-validation>false</flowable:work-form-field-validation>
+  <flowable:task-candidates-type>all</flowable:task-candidates-type>
+  <flowable:historyLevel>none</flowable:historyLevel>
+  <flowable:customElement customAttribute="1">
+    <flowable:nested>value</flowable:nested>
+    <flowable:empty />
+  </flowable:customElement>
+</cmmn:extensionElements>
