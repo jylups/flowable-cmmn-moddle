@@ -489,6 +489,392 @@
       "superClass": [ "Element" ]
     },
     {
+      "name": "LifecycleListener",
+      "superClass": [ "Listener" ],
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "sourceState",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetState",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "onTransaction",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "PlanItemLifecycleListener",
+      "superClass": [ "LifecycleListener" ]
+    },
+    {
+      "name": "CaseLifecycleListener",
+      "superClass": [ "LifecycleListener" ]
+    },
+    {
+      "name": "CompletionNeutralRule",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "id",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "extensionElements",
+          "type": "cmmn:ExtensionElements"
+        },
+        {
+          "name": "cmmn:condition",
+          "type": "cmmn:Expression",
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ParentCompletionRule",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "id",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ReactivationRule",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "id",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "activateCondition",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "ignoreCondition",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "defaultCondition",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "DefaultReactivationRule",
+      "superClass": [ "ReactivationRule" ]
+    },
+    {
+      "name": "EventType",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "StartEventCorrelationConfiguration",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "EventCorrelationParameter",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "IOParameter",
+      "superClass": [ "Element" ],
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "source",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "target",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "transient",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "EventInParameter",
+      "superClass": [ "IOParameter" ]
+    },
+    {
+      "name": "EventOutParameter",
+      "superClass": [ "IOParameter" ]
+    },
+    {
+      "name": "ExternalWorkerInParameter",
+      "superClass": [ "IOParameter" ]
+    },
+    {
+      "name": "ExternalWorkerOutParameter",
+      "superClass": [ "IOParameter" ]
+    },
+    {
+      "name": "VariableAggregation",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "target",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "class",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "delegateExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "storeAsTransientVariable",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "createOverviewVariable",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "cmmn:variable",
+          "type": "flowable:AggregationVariable",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AggregationVariable",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "source",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "target",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetExpression",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Condition",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "group",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "match",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetAttribute",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceVariableType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceScope",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "operator",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetVariableType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetValue",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "conditions",
+          "type": "Condition",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Element-name",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "HttpHandler",
+      "superClass": [ "Element" ],
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "class",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "delegateExpression",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "HttpRequestHandler",
+      "superClass": [ "HttpHandler" ]
+    },
+    {
+      "name": "HttpResponseHandler",
+      "superClass": [ "HttpHandler" ]
+    },
+    {
       "name": "Docker",
       "superClass": [ "Element" ],
       "properties": [

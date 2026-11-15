@@ -1,0 +1,7 @@
+<cmmn:extensionElements xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:eventType>myEvent</flowable:eventType>
+  <flowable:startEventCorrelationConfiguration>storeAsUniqueReferenceId</flowable:startEventCorrelationConfiguration>
+  <flowable:eventCorrelationParameter name="customerId" value="${customerId}" />
+  <flowable:eventInParameter source="${name}" target="customerName" />
+  <flowable:eventOutParameter source="payload" target="result" transient="true" />
+</cmmn:extensionElements>

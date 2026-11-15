@@ -12,56 +12,17 @@
     "dropped-element cmmn:extensionElements > flowable:default-menu-navigation-size": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
-    "dropped-element cmmn:extensionElements > flowable:eventType": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:completionNeutralRule": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:planItemLifecycleListener": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:parentCompletionRule": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:eventOutParameter": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:variableAggregation": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
     "dropped-element cmmn:extensionElements > flowable:historyLevel": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
-    "dropped-element cmmn:extensionElements > flowable:caseLifecycleListener": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:eventCorrelationParameter": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:eventInParameter": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:startEventCorrelationConfiguration": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
     "dropped-element cmmn:extensionElements > flowable:channelKey": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:defaultReactivationRule": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },
     "dropped-element cmmn:extensionElements > flowable:static-case-key": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
     "dropped-element cmmn:extensionElements > flowable:jobCategory": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:externalWorkerInParameter": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:externalWorkerOutParameter": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },
     "dropped-element cmmn:extensionElements > flowable:includeInHistory": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
@@ -81,9 +42,6 @@
     "dropped-element cmmn:extensionElements > flowable:testEntry": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
-    "dropped-element cmmn:extensionElements > flowable:reactivationRule": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
     "dropped-element cmmn:extensionElements > flowable:customElement": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
@@ -99,23 +57,11 @@
     "dropped-element cmmn:exitCriterion > cmmn:planItemOnPart": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
     },
-    "dropped-element cmmn:extensionElements > flowable:condition": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
     "dropped-element cmmn:extensionElements > flowable:customValue": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
-    "dropped-element cmmn:extensionElements > flowable:element-name": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
     "dropped-element cmmn:extensionElements > flowable:event-listener-name": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:extensionElements > flowable:httpRequestHandler": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
-    },
-    "dropped-element cmmn:extensionElements > flowable:httpResponseHandler": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },
     "dropped-element cmmn:extensionElements > flowable:index": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
@@ -169,6 +115,12 @@
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
     "added-attribute flowable:taskListener@class": {
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+    },
+    "dropped-attribute flowable:planItemLifecycleListener@flowable:class": {
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
+    },
+    "added-attribute flowable:planItemLifecycleListener@class": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     }
   }

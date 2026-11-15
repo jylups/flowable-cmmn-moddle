@@ -49,6 +49,28 @@ describe('import -> export roundtrip', function() {
   });
 
 
+  describe('should keep flowable extension elements', function() {
+
+    function validateExtensions(name) {
+      return validateExport('test/fixtures/xml/' + name + '.part.cmmn', 'cmmn:ExtensionElements');
+    }
+
+    it('lifecycle listeners', validateExtensions('flowable-lifecycle-listeners'));
+
+    it('item control rules', validateExtensions('flowable-item-control-rules'));
+
+    it('event registry', validateExtensions('flowable-event-registry'));
+
+    it('external worker parameters, HTTP handlers and element name',
+      validateExtensions('flowable-external-worker-and-http'));
+
+    it('variable aggregation', validateExtensions('flowable-variable-aggregation'));
+
+    it('condition', validateExtensions('flowable-condition'));
+
+  });
+
+
   describe('should keep flowable DI extensions', function() {
 
     it('flowable:docker', validateExport(

@@ -105,6 +105,31 @@ This package extends the CMMN 1.1 meta-model with Flowable-specific elements and
 ### Milestones
 - `flowable:milestoneVariable` - Milestone variable
 
+### Lifecycle Listeners
+- `flowable:planItemLifecycleListener` - Plan item lifecycle listener (`sourceState`, `targetState`, `onTransaction`, and the listener attributes, fields and script)
+- `flowable:caseLifecycleListener` - Case lifecycle listener
+
+### Item Control Rules
+- `flowable:completionNeutralRule` - Completion neutral rule, with a `<condition>` child in the CMMN namespace
+- `flowable:parentCompletionRule` - Parent completion rule (`type`)
+- `flowable:reactivationRule` - Reactivation rule (`activateCondition`, `ignoreCondition`, `defaultCondition`)
+- `flowable:defaultReactivationRule` - Default reactivation rule of a reactivation event listener
+
+### Event Registry
+- `flowable:eventType` - Event type of a case, an event listener or a send event task
+- `flowable:startEventCorrelationConfiguration` - Correlation configuration of a case started by an event
+- `flowable:eventCorrelationParameter` - Correlation parameter (`name`, `value`)
+- `flowable:eventInParameter`, `flowable:eventOutParameter` - Event payload mapping (`source`, `sourceExpression`, `target`, `targetExpression`, `transient`, ...)
+
+### External Worker and HTTP Tasks
+- `flowable:externalWorkerInParameter`, `flowable:externalWorkerOutParameter` - External worker variable mapping
+- `flowable:httpRequestHandler`, `flowable:httpResponseHandler` - HTTP task handlers (`class` or `delegateExpression`)
+
+### Other Extension Elements
+- `flowable:variableAggregation` - Variable aggregation of a repetition rule, with `<variable>` children in the CMMN namespace
+- `flowable:condition` - Condition built in the Flowable modeler, with nested conditions
+- `flowable:element-name` - Name of an element with line breaks
+
 ### Diagram Interchange
 - `flowable:docker` - In the `di:extension` of a `cmmndi:CMMNEdge`: the point where the connection attaches to its source or target shape (`type` is `source` or `target`, `x` and `y` are relative to the shape's top left corner). The Flowable modeler writes them; cmmn-js keeps them as they were read and does not update them when shapes or connections change, and adds none to new connections.
 

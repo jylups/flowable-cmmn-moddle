@@ -413,6 +413,144 @@ describe('read', function() {
     });
 
 
+    describe('flowable extension elements', function() {
+
+      var NS = 'xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" ' +
+               'xmlns:flowable="http://flowable.org/cmmn"';
+
+      function readExtensions(xml) {
+        return moddle.fromXML(
+          '<extensionElements ' + NS + '>' + xml + '</extensionElements>',
+          'cmmn:ExtensionElements'
+        ).then(function(result) {
+          expect(result.warnings).to.be.empty;
+
+          return result.rootElement.values;
+        });
+      }
+
+
+      it('lifecycle listeners', function() {
+
+        return readExtensions(
+          '<flowable:planItemLifecycleListener class="org.example.Listener" sourceState="available" targetState="active">' +
+            '<flowable:field name="greeting" stringValue="hello" />' +
+          '</flowable:planItemLifecycleListener>' +
+          '<flowable:caseLifecycleListener expression="${done}" targetState="completed" />'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            {
+              $type: 'flowable:PlanItemLifecycleListener',
+              'class': 'org.example.Listener',
+              sourceState: 'available',
+              targetState: 'active',
+              fields: [
+                { $type: 'flowable:Field', name: 'greeting', stringValue: 'hello' }
+              ]
+            },
+            {
+              $type: 'flowable:CaseLifecycleListener',
+              expression: '${done}',
+              targetState: 'completed'
+            }
+          ]);
+        });
+      });
+
+
+      it('completionNeutralRule with a condition in the CMMN namespace', function() {
+
+        return readExtensions(
+          '<flowable:completionNeutralRule name="Neutral">' +
+            '<condition>${neutral}</condition>' +
+          '</flowable:completionNeutralRule>'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            {
+              $type: 'flowable:CompletionNeutralRule',
+              name: 'Neutral',
+              condition: { $type: 'cmmn:Expression', body: '${neutral}' }
+            }
+          ]);
+        });
+      });
+
+
+      it('variableAggregation with variables in the CMMN namespace', function() {
+
+        return readExtensions(
+          '<flowable:variableAggregation target="reviews">' +
+            '<variable source="approved" />' +
+            '<variable sourceExpression="${comment}" target="description" />' +
+          '</flowable:variableAggregation>'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            {
+              $type: 'flowable:VariableAggregation',
+              target: 'reviews',
+              variable: [
+                { $type: 'flowable:AggregationVariable', source: 'approved' },
+                { $type: 'flowable:AggregationVariable', sourceExpression: '${comment}', target: 'description' }
+              ]
+            }
+          ]);
+        });
+      });
+
+
+      it('event registry elements', function() {
+
+        return readExtensions(
+          '<flowable:eventType>myEvent</flowable:eventType>' +
+          '<flowable:startEventCorrelationConfiguration>storeAsUniqueReferenceId</flowable:startEventCorrelationConfiguration>' +
+          '<flowable:eventCorrelationParameter name="customerId" value="${customerId}" />' +
+          '<flowable:eventOutParameter source="payload" target="result" transient="true" />'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            { $type: 'flowable:EventType', body: 'myEvent' },
+            { $type: 'flowable:StartEventCorrelationConfiguration', body: 'storeAsUniqueReferenceId' },
+            { $type: 'flowable:EventCorrelationParameter', name: 'customerId', value: '${customerId}' },
+            { $type: 'flowable:EventOutParameter', source: 'payload', target: 'result', 'transient': 'true' }
+          ]);
+        });
+      });
+
+
+      it('nested conditions and element-name', function() {
+
+        return readExtensions(
+          '<flowable:condition group="true" match="all">' +
+            '<flowable:condition sourceName="decided" operator="vars:exists" />' +
+          '</flowable:condition>' +
+          '<flowable:element-name>Review the claim</flowable:element-name>'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            {
+              $type: 'flowable:Condition',
+              group: 'true',
+              match: 'all',
+              conditions: [
+                { $type: 'flowable:Condition', sourceName: 'decided', operator: 'vars:exists' }
+              ]
+            },
+            { $type: 'flowable:Element-name', body: 'Review the claim' }
+          ]);
+        });
+      });
+
+    });
+
+
     describe('flowable:field', function() {
 
       it('attributes', function() {
