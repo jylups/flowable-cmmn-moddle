@@ -130,6 +130,9 @@ This package extends the CMMN 1.1 meta-model with Flowable-specific elements and
 - `flowable:condition` - Condition built in the Flowable modeler, with nested conditions
 - `flowable:element-name` - Name of an element with line breaks
 
+### Elements Without a Type
+Other `flowable:*` extension elements, such as the Flowable modeler's `flowable:work-form-field-validation` or custom extension elements, are kept as generic elements with their attributes, text and children (with `@jylups/cmmn-moddle` 6.1.0 or later). `flowable:*` attributes without a property are kept as unknown attributes, with an import warning.
+
 ### Diagram Interchange
 - `flowable:docker` - In the `di:extension` of a `cmmndi:CMMNEdge`: the point where the connection attaches to its source or target shape (`type` is `source` or `target`, `x` and `y` are relative to the shape's top left corner). The Flowable modeler writes them; cmmn-js keeps them as they were read and does not update them when shapes or connections change, and adds none to new connections.
 
