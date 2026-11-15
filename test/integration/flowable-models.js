@@ -4,7 +4,8 @@ var glob = require('glob'),
     asyncMap = require('async').map;
 
 var readFile = require('../helper').readFile,
-    createModdle = require('../helper').createModdle;
+    createModdle = require('../helper').createModdle,
+    importXML = require('../helper').importXML;
 
 var path = require('path');
 
@@ -46,9 +47,11 @@ describe.skip('flowable models', function() {
       var xml = readFile(fullPath);
       var moddle = createModdle();
 
-      moddle.fromXML(xml, 'cmmn:Definitions', function(err, definitions, context) {
+      importXML(moddle, xml, 'cmmn:Definitions').then(function(imported) {
 
-        var warnings = context.warnings.filter(function(w) {
+        var err = imported.error;
+
+        var warnings = imported.warnings.filter(function(w) {
           return w.message.indexOf('unresolved reference') === -1;
         });
 
@@ -66,7 +69,7 @@ describe.skip('flowable models', function() {
         results[result]++;
 
         done();
-      });
+      }).catch(done);
     }, function(err) {
       if (err) {
         return done(err);

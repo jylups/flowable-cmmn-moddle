@@ -51,9 +51,6 @@
     "dropped-element cmmn:extensionElements > flowable:startEventCorrelationConfiguration": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },
-    "dropped-element flowable:field > flowable:expression": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/17"
-    },
     "dropped-element cmmn:extensionElements > flowable:channelKey": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
@@ -107,9 +104,6 @@
     },
     "dropped-element cmmn:extensionElements > flowable:test": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element cmmn:planItemStartTrigger > cmmn:standardEvent": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/18"
     },
     "dropped-element cmmn:exitCriterion > cmmn:planItemOnPart": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
@@ -182,12 +176,6 @@
     },
     "dropped-attribute flowable:taskListener@flowable:class": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "added-attribute flowable:field@expression": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/17"
-    },
-    "added-attribute cmmn:planItemStartTrigger@standardEvent": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/18"
     },
     "added-attribute flowable:taskListener@class": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"

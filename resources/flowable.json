@@ -314,7 +314,22 @@
           "type": "String"
         },
         {
+          "name": "expressionElement",
+          "type": "Expression"
+        },
+        {
           "name": "string",
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Expression",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
           "type": "String"
         }
       ]

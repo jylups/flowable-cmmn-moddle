@@ -18,21 +18,20 @@ describe('read', function() {
 
     describe('flowable:historyTimeToLive', function() {
 
-      it('on Case', function(done) {
+      it('on Case', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/case-flowable-historyTimeToLive.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'cmmn:Case', function(err, cmmnCase) {
+        return moddle.fromXML(xml, 'cmmn:Case').then(function(result) {
+          var cmmnCase = result.rootElement;
 
           // then
           expect(cmmnCase).to.jsonEqual({
             $type: 'cmmn:Case',
             historyTimeToLive: 'foo'
           });
-
-          done(err);
         });
 
       });
@@ -41,55 +40,54 @@ describe('read', function() {
 
     describe('flowable:priority', function() {
 
-      it('on HumanTask', function(done) {
+      it('on HumanTask', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/humanTask-flowable-priority.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'cmmn:HumanTask', function(err, serviceTask) {
+        return moddle.fromXML(xml, 'cmmn:HumanTask').then(function(result) {
+          var serviceTask = result.rootElement;
 
           // then
           expect(serviceTask).to.jsonEqual({
             $type: 'cmmn:HumanTask',
             priority: '${ priority }'
           });
-
-          done(err);
         });
 
       });
     });
 
 
-    it('flowable:script', function(done) {
+    it('flowable:script', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/flowable-script.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'flowable:Script', function(err, script) {
+      return moddle.fromXML(xml, 'flowable:Script').then(function(result) {
+        var script = result.rootElement;
 
         // then
         expect(script).to.jsonEqual({
           $type: 'flowable:Script',
           scriptFormat: 'groovy',
           resource: 'null',
-          value: 'foo = bar;'
+          value: '\n  foo = bar;\n'
         });
-
-        done(err);
       });
     });
 
 
-    it('flowable:in', function(done) {
+    it('flowable:in', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/flowable-in.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'flowable:In', function(err, binding) {
+      return moddle.fromXML(xml, 'flowable:In').then(function(result) {
+        var binding = result.rootElement;
 
         // then
         expect(binding).to.jsonEqual({
@@ -100,19 +98,18 @@ describe('read', function() {
           variables: 'all',
           local: true
         });
-
-        done(err);
       });
     });
 
 
-    it('flowable:out', function(done) {
+    it('flowable:out', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/flowable-out.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'flowable:Out', function(err, binding) {
+      return moddle.fromXML(xml, 'flowable:Out').then(function(result) {
+        var binding = result.rootElement;
 
         // then
         expect(binding).to.jsonEqual({
@@ -123,42 +120,40 @@ describe('read', function() {
           variables: 'all',
           local: true
         });
-
-        done(err);
       });
     });
 
 
     describe('flowable:FormSupported with flowable:formKey', function() {
 
-      it('on HumanTask', function(done) {
+      it('on HumanTask', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/humanTask-flowable-formSupported.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'cmmn:HumanTask', function(err, task) {
+        return moddle.fromXML(xml, 'cmmn:HumanTask').then(function(result) {
+          var task = result.rootElement;
 
           // then
           expect(task).to.jsonEqual({
             $type: 'cmmn:HumanTask',
             formKey: 'form.html'
           });
-
-          done(err);
         });
       });
 
     });
 
 
-    it('cmmn:CaseTask', function(done) {
+    it('cmmn:CaseTask', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/caseTask.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'cmmn:CaseTask', function(err, callActivity) {
+      return moddle.fromXML(xml, 'cmmn:CaseTask').then(function(result) {
+        var callActivity = result.rootElement;
 
         // then
         expect(callActivity).to.jsonEqual({
@@ -167,20 +162,19 @@ describe('read', function() {
           caseVersion: '1',
           caseTenantId: 'bar'
         });
-
-        done(err);
       });
 
     });
 
 
-    it('cmmn:DecisionTask', function(done) {
+    it('cmmn:DecisionTask', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/decisionTask.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'cmmn:DecisionTask', function(err, callActivity) {
+      return moddle.fromXML(xml, 'cmmn:DecisionTask').then(function(result) {
+        var callActivity = result.rootElement;
 
         // then
         expect(callActivity).to.jsonEqual({
@@ -191,20 +185,19 @@ describe('read', function() {
           mapDecisionResult: 'resultList',
           resultVariable: 'aVariable'
         });
-
-        done(err);
       });
 
     });
 
 
-    it('cmmn:ProcessTask', function(done) {
+    it('cmmn:ProcessTask', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/processTask.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'cmmn:ProcessTask', function(err, callActivity) {
+      return moddle.fromXML(xml, 'cmmn:ProcessTask').then(function(result) {
+        var callActivity = result.rootElement;
 
         // then
         expect(callActivity).to.jsonEqual({
@@ -213,8 +206,6 @@ describe('read', function() {
           processVersion: '1',
           processTenantId: 'bar'
         });
-
-        done(err);
       });
 
     });
@@ -222,13 +213,14 @@ describe('read', function() {
 
     describe('flowable:caseExecutionListener', function() {
 
-      it('attributes', function(done) {
+      it('attributes', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-caseExecutionListener.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:CaseExecutionListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:CaseExecutionListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -238,20 +230,19 @@ describe('read', function() {
             delegateExpression: '${myExecutionListener}',
             expression: '${myExecutionListener.notify(execution)}'
           });
-
-          done(err);
         });
 
       });
 
 
-      it('script', function(done) {
+      it('script', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-caseExecutionListener-script.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:CaseExecutionListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:CaseExecutionListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -260,22 +251,21 @@ describe('read', function() {
             script: {
               $type: 'flowable:Script',
               scriptFormat: 'groovy',
-              value: 'foo = bar;'
+              value: '\n    foo = bar;\n  '
             }
           });
-
-          done(err);
         });
       });
 
 
-      it('fields', function(done) {
+      it('fields', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-caseExecutionListener-fields.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:CaseExecutionListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:CaseExecutionListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -295,8 +285,6 @@ describe('read', function() {
               }
             ]
           });
-
-          done(err);
         });
 
       });
@@ -307,13 +295,14 @@ describe('read', function() {
 
     describe('flowable:taskListener', function() {
 
-      it('attributes', function(done) {
+      it('attributes', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-taskListener.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:TaskListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:TaskListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -323,20 +312,19 @@ describe('read', function() {
             delegateExpression: '${myTaskListener}',
             expression: '${myTaskListener.notify(task, task.eventName)}'
           });
-
-          done(err);
         });
 
       });
 
 
-      it('script', function(done) {
+      it('script', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-taskListener-script.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:TaskListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:TaskListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -345,11 +333,9 @@ describe('read', function() {
             script: {
               $type: 'flowable:Script',
               scriptFormat: 'groovy',
-              value: 'foo = bar;'
+              value: '\n    foo = bar;\n  '
             }
           });
-
-          done(err);
         });
       });
 
@@ -358,13 +344,14 @@ describe('read', function() {
 
     describe('flowable:variableListener', function() {
 
-      it('attributes', function(done) {
+      it('attributes', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-variableListener.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:VariableListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:VariableListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -374,20 +361,19 @@ describe('read', function() {
             delegateExpression: '${myListener}',
             expression: '${myListener.notify(execution)}'
           });
-
-          done(err);
         });
 
       });
 
 
-      it('script', function(done) {
+      it('script', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-variableListener-script.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:VariableListener', function(err, executionListener) {
+        return moddle.fromXML(xml, 'flowable:VariableListener').then(function(result) {
+          var executionListener = result.rootElement;
 
           // then
           expect(executionListener).to.jsonEqual({
@@ -396,11 +382,9 @@ describe('read', function() {
             script: {
               $type: 'flowable:Script',
               scriptFormat: 'groovy',
-              value: 'foo = bar;'
+              value: '\n    foo = bar;\n  '
             }
           });
-
-          done(err);
         });
       });
 
@@ -408,13 +392,14 @@ describe('read', function() {
 
     describe('flowable:field', function() {
 
-      it('attributes', function(done) {
+      it('attributes', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-field-attributes.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:Field', function(err, field) {
+        return moddle.fromXML(xml, 'flowable:Field').then(function(result) {
+          var field = result.rootElement;
 
           // then
           expect(field).to.jsonEqual({
@@ -423,62 +408,62 @@ describe('read', function() {
             expression: '<html><body>Hi!</body></html>',
             stringValue: '41 is not the answer!'
           });
-
-          done(err);
         });
       });
 
 
-      it('with nested expression and string', function(done) {
+      it('with nested expression and string', function() {
 
         // given
         var xml = readFile('test/fixtures/xml/flowable-field-children.part.cmmn');
 
         // when
-        moddle.fromXML(xml, 'flowable:Field', function(err, field) {
+        return moddle.fromXML(xml, 'flowable:Field').then(function(result) {
+          var field = result.rootElement;
 
           // then
           expect(field).to.jsonEqual({
             $type: 'flowable:Field',
             name: 'html',
-            expression: '<html><body>Hi!</body></html>',
+            expressionElement: {
+              $type: 'flowable:Expression',
+              body: '<html><body>Hi!</body></html>'
+            },
             string: '42 is the answer!'
           });
-
-          done(err);
         });
       });
 
     });
 
 
-    it('flowable:repeatOnStandardEvent', function(done) {
+    it('flowable:repeatOnStandardEvent', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/repetitionRule-repeatOnStandardEvent.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'cmmn:RepetitionRule', function(err, callActivity) {
+      return moddle.fromXML(xml, 'cmmn:RepetitionRule').then(function(result) {
+        var callActivity = result.rootElement;
 
         // then
         expect(callActivity).to.jsonEqual({
           $type: 'cmmn:RepetitionRule',
           repeatOnStandardEvent: 'exit'
         });
-
-        done(err);
       });
 
     });
 
 
-    it('flowable:variableOnPart', function(done) {
+    it('flowable:variableOnPart', function() {
 
       // given
       var xml = readFile('test/fixtures/xml/flowable-variable-on-part.part.cmmn');
 
       // when
-      moddle.fromXML(xml, 'flowable:VariableOnPart', function(err, onPart) {
+      return moddle.fromXML(xml, 'flowable:VariableOnPart').then(function(result) {
+        var onPart = result.rootElement;
 
         // then
         expect(onPart).to.jsonEqual({
@@ -486,8 +471,6 @@ describe('read', function() {
           variableName: 'foo',
           variableEvent: 'create'
         });
-
-        done(err);
       });
 
     });

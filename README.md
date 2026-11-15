@@ -131,7 +131,7 @@ Example CMMN XML with Flowable extensions:
 ## Development
 
 ### Prerequisites
-- Node.js 24 or later (the tests use Babel 8, which needs Node 22.18 or later; CI runs on Node 24 and 26)
+- Node.js 24 or later (the tests `require()` the ES modules of `@jylups/cmmn-moddle`, `moddle` and `moddle-xml`, which needs Node 20.19 or later; CI runs on Node 24 and 26)
 - npm
 
 ### Setup

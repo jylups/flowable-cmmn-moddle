@@ -17,31 +17,22 @@ describe('import -> export roundtrip', function() {
     );
   }
 
-  function validateExport(file) {
+  function validateExport(file, typeName) {
 
-    return function(done) {
+    return function() {
 
       var xml = stripSpaces(readFile(file));
 
       var moddle = createModdle();
 
-      moddle.fromXML(xml, 'cmmn:Definitions', function(err, definitions) {
-        if (err) {
-          return done(err);
-        }
+      return moddle.fromXML(xml, typeName || 'cmmn:Definitions').then(function(result) {
 
-        moddle.toXML(definitions, function(err, savedXML) {
+        // fragments (*.part.cmmn) have no XML declaration
+        return moddle.toXML(result.rootElement, { preamble: !typeName });
+      }).then(function(result) {
+        var savedXML = stripSpaces(result.xml);
 
-          if (err) {
-            return done(err);
-          }
-
-          savedXML = stripSpaces(savedXML);
-
-          expect(savedXML).to.eql(xml);
-
-          done();
-        });
+        expect(savedXML).to.eql(xml);
       });
     };
   }
@@ -54,6 +45,17 @@ describe('import -> export roundtrip', function() {
     it('flowable:InputOutput', validateExport('test/fixtures/xml/listener-flowable-nestedScript.cmmn'));
 
     it('flowable:VariableOnPart', validateExport('test/fixtures/xml/sentry-flowable-variable-on-part.cmmn'));
+
+  });
+
+
+  describe('should keep the form of flowable:field values', function() {
+
+    it('expression and string children', validateExport(
+      'test/fixtures/xml/flowable-field-expression-element.part.cmmn', 'flowable:Field'));
+
+    it('expression and stringValue attributes', validateExport(
+      'test/fixtures/xml/flowable-field-expression-attribute.part.cmmn', 'flowable:Field'));
 
   });
 
