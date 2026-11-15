@@ -123,6 +123,8 @@ A listener has a `class`, `expression` or `delegateExpression`, or `type="script
 - `flowable:in` - Input variable mapping
 - `flowable:out` - Output variable mapping
 
+Flowable reads `source` or `sourceExpression`, `target` or `targetExpression`, `sourceType` and `targetType` (the variable type, for example `string` or `integer`) and `transient`. `variables`, `local` and `businessKey` are kept for models written in the Camunda form, but Flowable does not read them; use `flowable:inheritVariables` and `flowable:businessKey` of the task instead.
+
 ### Repetition Rules
 - `flowable:repeatOnStandardEvent` - Repeat on standard event
 - `flowable:counterVariable` - Counter variable
