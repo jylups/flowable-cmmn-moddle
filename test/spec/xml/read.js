@@ -725,6 +725,45 @@ describe('read', function() {
       });
 
 
+      it('script listeners in the Flowable form', function() {
+
+        return readExtensions(
+          '<flowable:taskListener event="assignment" type="script">' +
+            '<flowable:script language="javascript" resultVariable="result">task.getId()</flowable:script>' +
+          '</flowable:taskListener>' +
+          '<flowable:caseLifecycleListener type="script" targetState="completed">' +
+            '<flowable:script language="groovy">caseInstance.getId()</flowable:script>' +
+          '</flowable:caseLifecycleListener>'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            {
+              $type: 'flowable:TaskListener',
+              event: 'assignment',
+              type: 'script',
+              script: {
+                $type: 'flowable:Script',
+                language: 'javascript',
+                resultVariable: 'result',
+                value: 'task.getId()'
+              }
+            },
+            {
+              $type: 'flowable:CaseLifecycleListener',
+              type: 'script',
+              targetState: 'completed',
+              script: {
+                $type: 'flowable:Script',
+                language: 'groovy',
+                value: 'caseInstance.getId()'
+              }
+            }
+          ]);
+        });
+      });
+
+
       it('completionNeutralRule with a condition in the CMMN namespace', function() {
 
         return readExtensions(

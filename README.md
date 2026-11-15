@@ -117,6 +117,8 @@ Saving keeps these attributes as written: none of them has a default, since Flow
 - `flowable:taskListener` - Task listeners  
 - `flowable:variableListener` - Variable listeners
 
+A listener has a `class`, `expression` or `delegateExpression`, or `type="script"` with a `<flowable:script>` child: `language`, an optional `resultVariable`, and the script as its text. Flowable runs the script only with `type="script"`; `scriptFormat` and `resource` of `<flowable:script>` are kept for models written in the Camunda form.
+
 ### Variable Mapping
 - `flowable:in` - Input variable mapping
 - `flowable:out` - Output variable mapping
