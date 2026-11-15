@@ -31,7 +31,8 @@ var fs = require('fs'),
 
 var DOMParser = require('@xmldom/xmldom').DOMParser;
 
-var createModdle = require('../test/helper').createModdle;
+var createModdle = require('../test/helper').createModdle,
+    importXML = require('../test/helper').importXML;
 
 var NAMESPACES = {
   'http://www.omg.org/spec/CMMN/20151109/MODEL': 'cmmn',
@@ -121,38 +122,40 @@ function findModels(dir) {
 function roundtrip(xml) {
   var moddle = createModdle();
 
-  return new Promise(function(resolve) {
-    moddle.fromXML(xml, 'cmmn:Definitions', function(err, definitions, context) {
-      var warnings = ((context && context.warnings) || []).map(function(w) {
-        return w.message;
-      });
+  return importXML(moddle, xml, 'cmmn:Definitions').then(function(imported) {
+    var warnings = imported.warnings.map(function(w) {
+      return w.message;
+    });
 
-      if (err) {
-        return resolve({ error: err.message, warnings: warnings });
-      }
+    if (imported.error) {
+      return { error: imported.error.message, warnings: warnings };
+    }
 
-      var consoleWarn = console.warn,
-          consoleError = console.error,
-          logged = [];
+    var consoleWarn = console.warn,
+        consoleError = console.error,
+        logged = [];
 
-      console.warn = console.error = function() {
-        logged.push(Array.prototype.join.call(arguments, ' '));
-      };
+    console.warn = console.error = function() {
+      logged.push(Array.prototype.join.call(arguments, ' '));
+    };
 
-      moddle.toXML(definitions, function(err, savedXML) {
-        console.warn = consoleWarn;
-        console.error = consoleError;
+    function restoreConsole() {
+      console.warn = consoleWarn;
+      console.error = consoleError;
 
-        warnings = warnings.concat(logged.map(function(message) {
-          return 'export: ' + message;
-        }));
+      warnings = warnings.concat(logged.map(function(message) {
+        return 'export: ' + message;
+      }));
+    }
 
-        if (err) {
-          return resolve({ error: 'export failed: ' + err.message, warnings: warnings });
-        }
+    return moddle.toXML(imported.rootElement).then(function(result) {
+      restoreConsole();
 
-        resolve({ savedXML: savedXML, warnings: warnings });
-      });
+      return { savedXML: result.xml, warnings: warnings };
+    }, function(err) {
+      restoreConsole();
+
+      return { error: 'export failed: ' + err.message, warnings: warnings };
     });
   });
 }
