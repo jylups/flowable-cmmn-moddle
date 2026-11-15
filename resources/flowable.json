@@ -699,6 +699,53 @@
       "superClass": [ "ReactivationRule" ]
     },
     {
+      "name": "EventListener",
+      "isAbstract": true,
+      "extends": [ "cmmn:EventListener" ],
+      "properties": [
+        {
+          "name": "availableCondition",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "eventType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "signalRef",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "variableName",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "variableChangeType",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ChannelKey",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "SystemChannel",
+      "superClass": [ "Element" ]
+    },
+    {
       "name": "EventType",
       "superClass": [ "Element" ],
       "properties": [

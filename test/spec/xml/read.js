@@ -213,6 +213,65 @@ describe('read', function() {
     });
 
 
+    describe('event listener attributes', function() {
+
+      function read(name, typeName) {
+        return moddle.fromXML(readFile('test/fixtures/xml/' + name + '.part.cmmn'), typeName);
+      }
+
+
+      it('variable event listener', function() {
+
+        // when
+        return read('eventListener-flowable-variable', 'cmmn:EventListener').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:EventListener',
+            id: 'EventListener_Variable',
+            availableCondition: '${listening}',
+            eventType: 'variable',
+            variableName: 'approved',
+            variableChangeType: 'update-create'
+          });
+        });
+      });
+
+
+      it('signal event listener', function() {
+
+        // when
+        return read('eventListener-flowable-signal', 'cmmn:EventListener').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:EventListener',
+            id: 'EventListener_Signal',
+            eventType: 'signal',
+            signalRef: 'orderCancelled'
+          });
+        });
+      });
+
+
+      it('available condition of a user event listener', function() {
+
+        // when
+        return read('userEventListener-flowable-availableCondition', 'cmmn:UserEventListener').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+          expect(result.rootElement.get('flowable:availableCondition')).to.eql('${cmmn:isStageCompletable()}');
+        });
+      });
+
+    });
+
+
     describe('task attributes', function() {
 
       function read(name, typeName) {
@@ -725,6 +784,24 @@ describe('read', function() {
             { $type: 'flowable:StartEventCorrelationConfiguration', body: 'storeAsUniqueReferenceId' },
             { $type: 'flowable:EventCorrelationParameter', name: 'customerId', value: '${customerId}' },
             { $type: 'flowable:EventOutParameter', source: 'payload', target: 'result', 'transient': 'true' }
+          ]);
+        });
+      });
+
+
+      it('send event channels', function() {
+
+        return readExtensions(
+          '<flowable:eventType>orderShipped</flowable:eventType>' +
+          '<flowable:channelKey>orderChannel</flowable:channelKey>' +
+          '<flowable:systemChannel />'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            { $type: 'flowable:EventType', body: 'orderShipped' },
+            { $type: 'flowable:ChannelKey', body: 'orderChannel' },
+            { $type: 'flowable:SystemChannel' }
           ]);
         });
       });

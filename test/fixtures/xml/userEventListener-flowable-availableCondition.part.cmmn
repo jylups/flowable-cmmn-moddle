@@ -1,0 +1,1 @@
+<userEventListener xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="UserEventListener_1" flowable:availableCondition="${cmmn:isStageCompletable()}" />
