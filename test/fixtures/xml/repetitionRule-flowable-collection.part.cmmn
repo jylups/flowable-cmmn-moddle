@@ -1,0 +1,1 @@
+<repetitionRule xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="RepetitionRule_1" flowable:counterVariable="count" flowable:collectionVariable="${orders}" flowable:elementVariable="order" flowable:elementIndexVariable="orderIndex" flowable:ignoreCounterVariable="true" />

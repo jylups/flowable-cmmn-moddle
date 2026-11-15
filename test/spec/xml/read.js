@@ -272,6 +272,114 @@ describe('read', function() {
     });
 
 
+    describe('stage, milestone, repetition rule and sentry attributes', function() {
+
+      function read(name, typeName) {
+        return moddle.fromXML(readFile('test/fixtures/xml/' + name + '.part.cmmn'), typeName);
+      }
+
+
+      it('stage overview and auto complete condition', function() {
+
+        // when
+        return read('stage-flowable-overview', 'cmmn:Stage').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:Stage',
+            id: 'Stage_1',
+            name: 'Review',
+            includeInStageOverview: '${showReview}',
+            displayOrder: '20',
+            businessStatus: 'inReview',
+            autoCompleteCondition: '${reviewDone}'
+          });
+        });
+      });
+
+
+      it('milestone overview', function() {
+
+        // when
+        return read('milestone-flowable-overview', 'cmmn:Milestone').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:Milestone',
+            id: 'Milestone_1',
+            name: 'Approved',
+            milestoneVariable: 'approved',
+            includeInStageOverview: 'false',
+            displayOrder: '30',
+            businessStatus: 'approved'
+          });
+        });
+      });
+
+
+      it('repetition over a collection', function() {
+
+        // when
+        return read('repetitionRule-flowable-collection', 'cmmn:RepetitionRule').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(result.rootElement).to.jsonEqual({
+            $type: 'cmmn:RepetitionRule',
+            id: 'RepetitionRule_1',
+            counterVariable: 'count',
+            collectionVariable: '${orders}',
+            elementVariable: 'order',
+            elementIndexVariable: 'orderIndex',
+            ignoreCounterVariable: 'true'
+          });
+        });
+      });
+
+
+      it('sentry trigger mode', function() {
+
+        // when
+        return read('sentry-flowable-triggerMode', 'cmmn:Sentry').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+          expect(result.rootElement.get('flowable:triggerMode')).to.eql('onEvent');
+        });
+      });
+
+
+      it('exit criterion exit type', function() {
+
+        // when
+        return read('exitCriterion-flowable-exitType', 'cmmn:ExitCriterion').then(function(result) {
+
+          // then
+          expect(result.warnings).to.be.empty;
+          expect(result.rootElement.get('flowable:exitEventType')).to.eql('complete');
+          expect(result.rootElement.get('flowable:exitType')).to.eql('activeAndEnabledInstances');
+        });
+      });
+
+
+      it('no overview attributes on other plan items', function() {
+
+        // given
+        var task = moddle.create('cmmn:Task');
+
+        // then
+        expect(task.$descriptor.propertiesByName['flowable:displayOrder']).not.to.exist;
+        expect(task.$descriptor.propertiesByName['flowable:autoCompleteCondition']).not.to.exist;
+      });
+
+    });
+
+
     describe('task attributes', function() {
 
       function read(name, typeName) {

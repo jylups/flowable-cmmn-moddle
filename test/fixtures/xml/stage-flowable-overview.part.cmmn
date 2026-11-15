@@ -1,0 +1,1 @@
+<stage xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="Stage_1" name="Review" flowable:includeInStageOverview="${showReview}" flowable:displayOrder="20" flowable:businessStatus="inReview" flowable:autoCompleteCondition="${reviewDone}" />

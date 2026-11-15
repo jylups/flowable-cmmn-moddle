@@ -409,6 +409,26 @@
           "name": "maxInstanceCount",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "collectionVariable",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "elementVariable",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "elementIndexVariable",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "ignoreCounterVariable",
+          "isAttr": true,
+          "type": "String"
         }
       ]
     },
@@ -593,6 +613,57 @@
       "properties": [
         {
           "name": "exitEventType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "exitType",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "PlanItemOverview",
+      "isAbstract": true,
+      "extends": [ "cmmn:Stage", "cmmn:Milestone" ],
+      "properties": [
+        {
+          "name": "includeInStageOverview",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "displayOrder",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "businessStatus",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Stage",
+      "isAbstract": true,
+      "extends": [ "cmmn:Stage" ],
+      "properties": [
+        {
+          "name": "autoCompleteCondition",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Sentry",
+      "isAbstract": true,
+      "extends": [ "cmmn:Sentry" ],
+      "properties": [
+        {
+          "name": "triggerMode",
           "isAttr": true,
           "type": "String"
         }

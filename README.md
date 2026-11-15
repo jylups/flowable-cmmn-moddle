@@ -128,10 +128,24 @@ Flowable reads `source` or `sourceExpression`, `target` or `targetExpression`, `
 ### Repetition Rules
 - `flowable:repeatOnStandardEvent` - Repeat on standard event
 - `flowable:counterVariable` - Counter variable
-- `flowable:maxInstanceCount` - Maximum instance count
+- `flowable:maxInstanceCount` - Maximum instance count, a number or `unlimited`
+- `flowable:collectionVariable` - Collection, or an expression giving one, to repeat the plan item for each element of
+- `flowable:elementVariable`, `flowable:elementIndexVariable` - Local variables for the element and its index
+- `flowable:ignoreCounterVariable` - `true` to not keep a counter variable
 
-### Milestones
-- `flowable:milestoneVariable` - Milestone variable
+### Stages and Milestones
+- `flowable:includeInStageOverview` - Whether the stage or milestone is shown in the stage overview (`true` by default, or an expression)
+- `flowable:displayOrder` - Order in the stage overview, a number
+- `flowable:businessStatus` - Business status set on the case when the stage starts or the milestone is reached
+- `flowable:autoCompleteCondition` - Expression that completes a stage when it holds (stages only)
+- `flowable:milestoneVariable` - Milestone variable (milestones only)
+
+Flowable also reads an `autoComplete` attribute in the Flowable namespace. It is kept, as an unknown attribute with an import warning, because CMMN stages already have an `autoComplete` attribute; use the CMMN one.
+
+### Sentries and Exit Criteria
+- `flowable:triggerMode` - When the sentry checks its on parts: `default` or `onEvent`
+- `flowable:exitEventType` - What an exit criterion does: `exit` (the default), `complete` or `forceComplete`
+- `flowable:exitType` - Which instances of a repeating plan item an exit criterion exits: `default`, `activeInstances` or `activeAndEnabledInstances`
 
 ### Lifecycle Listeners
 - `flowable:planItemLifecycleListener` - Plan item lifecycle listener (`sourceState`, `targetState`, `onTransaction`, and the listener attributes, fields and script)
