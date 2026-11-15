@@ -21,9 +21,6 @@
     "dropped-element cmmn:extensionElements > flowable:planItemLifecycleListener": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },
-    "dropped-element di:extension > flowable:docker": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/19"
-    },
     "dropped-element cmmn:extensionElements > flowable:parentCompletionRule": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },

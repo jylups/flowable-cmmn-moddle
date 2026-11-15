@@ -1,0 +1,4 @@
+<di:extension xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:docker type="source" x="50" y="40" />
+  <flowable:docker type="target" x="9.5" y="14" />
+</di:extension>

@@ -105,6 +105,9 @@ This package extends the CMMN 1.1 meta-model with Flowable-specific elements and
 ### Milestones
 - `flowable:milestoneVariable` - Milestone variable
 
+### Diagram Interchange
+- `flowable:docker` - In the `di:extension` of a `cmmndi:CMMNEdge`: the point where the connection attaches to its source or target shape (`type` is `source` or `target`, `x` and `y` are relative to the shape's top left corner). The Flowable modeler writes them; cmmn-js keeps them as they were read and does not update them when shapes or connections change, and adds none to new connections.
+
 ## CMMN XML Namespace
 
 This extension uses the namespace `http://flowable.org/cmmn` with the prefix `flowable:`.

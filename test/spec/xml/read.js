@@ -390,6 +390,29 @@ describe('read', function() {
 
     });
 
+    it('flowable:docker', function() {
+
+      // given
+      var xml = readFile('test/fixtures/xml/di-extension-flowable-docker.part.cmmn');
+
+      // when
+      return moddle.fromXML(xml, 'di:Extension').then(function(result) {
+        var extension = result.rootElement;
+
+        // then
+        expect(result.warnings).to.be.empty;
+
+        expect(extension).to.jsonEqual({
+          $type: 'di:Extension',
+          values: [
+            { $type: 'flowable:Docker', type: 'source', x: 50, y: 40 },
+            { $type: 'flowable:Docker', type: 'target', x: 9.5, y: 14 }
+          ]
+        });
+      });
+    });
+
+
     describe('flowable:field', function() {
 
       it('attributes', function() {
