@@ -59,22 +59,46 @@ This package extends the CMMN 1.1 meta-model with Flowable-specific elements and
 - `flowable:initiatorVariableName` - Define initiator variable name
 - `flowable:candidateStarterGroups` - Set candidate starter groups
 
+### Tasks
+On every task (`cmmn:task`, `cmmn:humanTask`, `cmmn:caseTask`, `cmmn:processTask` and `cmmn:decisionTask`):
+- `flowable:async`, `flowable:exclusive` - Start the task asynchronously, as an exclusive job
+- `flowable:asyncLeave`, `flowable:asyncLeaveExclusive` - Leave the task asynchronously, as an exclusive job
+- `flowable:isBlockingExpression` - Expression for `isBlocking`
+- `flowable:sameDeployment` - Use the form, case or process of the same deployment
+
+On a `cmmn:task`, by its `flowable:type` (`java`, `script`, `http`, `external-worker`, `casePage`, `send-event`, `mail`):
+- `flowable:class`, `flowable:expression`, `flowable:delegateExpression` - Implementation of a java or HTTP task
+- `flowable:resultVariableName`, `flowable:storeResultVariableAsTransient` - Result of a java or script task
+- `flowable:scriptFormat`, `flowable:autoStoreVariables`, `flowable:doNotIncludeVariables` - Script task
+- `flowable:topic`, `flowable:doNotIncludeVariables` - External worker task
+- `flowable:parallelInSameTransaction` - HTTP task
+- `flowable:formKey`, `flowable:formFieldValidation` - Form of a java task or a case page
+- `flowable:assignee`, `flowable:owner`, `flowable:candidateUsers`, `flowable:candidateGroups`, `flowable:label`, `flowable:icon` - Case page
+
+Saving keeps these attributes as written: none of them has a default, since Flowable's default differs by task (for example `sameDeployment` is true for human tasks and false for case and process tasks).
+
 ### Human Tasks
-- `flowable:assignee` - Task assignee
+- `flowable:assignee`, `flowable:owner` - Task assignee and owner
 - `flowable:candidateUsers` - Candidate users
 - `flowable:candidateGroups` - Candidate groups
 - `flowable:dueDate` - Task due date
 - `flowable:followUpDate` - Task follow-up date
 - `flowable:priority` - Task priority
+- `flowable:category` - Task category
+- `flowable:taskIdVariableName`, `flowable:taskCompleterVariableName` - Variables for the task id and the user who completed it
 - `flowable:formKey` - Associated form key
 - `flowable:formFieldValidation` - Form field validation
+
+### Process and Case Tasks
+- `flowable:businessKey`, `flowable:inheritBusinessKey` - Business key of the child process or case
+- `flowable:inheritVariables` - Pass all variables to the child process or case
+- `flowable:idVariableName` - Variable for the id of the child process or case
+- `flowable:fallbackToDefaultTenant` - Fallback to default tenant
 
 ### Process Tasks
 - `flowable:processBinding` - Process binding type
 - `flowable:processVersion` - Process version
 - `flowable:processTenantId` - Process tenant ID
-- `flowable:fallbackToDefaultTenant` - Fallback to default tenant
-- `flowable:sameDeployment` - Use same deployment
 
 ### Case Tasks
 - `flowable:caseBinding` - Case binding type

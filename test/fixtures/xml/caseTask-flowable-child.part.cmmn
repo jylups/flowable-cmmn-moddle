@@ -1,0 +1,1 @@
+<caseTask xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="CaseTask_1" flowable:sameDeployment="false" flowable:businessKey="childKey" flowable:inheritBusinessKey="false" flowable:inheritVariables="true" flowable:idVariableName="caseIdVariable" flowable:fallbackToDefaultTenant="false" />
