@@ -1,25 +1,32 @@
 {
   "losses": {
     "dropped-element cmmn:exitCriterion > cmmn:planItemOnPart": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: CMMN does not allow an on-part inside a criterion, and Flowable's parser does not read it there either"
     },
     "dropped-attribute cmmndi:CMMNShape@cmmnElementRef": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: the reference points at an ID that no element in the file has; it is reported as an import warning (unresolved reference) and dropped on save"
     },
     "dropped-attribute cmmn:entryCriterion@sentryRef": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: the reference points at an ID that no element in the file has; it is reported as an import warning (unresolved reference) and dropped on save"
     },
     "dropped-attribute cmmn:exitCriterion@sentryRef": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: the reference points at an ID that no element in the file has; it is reported as an import warning (unresolved reference) and dropped on save"
     },
     "dropped-attribute cmmn:planItemOnPart@sourceRef": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: the reference points at an ID that no element in the file has; it is reported as an import warning (unresolved reference) and dropped on save"
     },
     "dropped-attribute cmmndi:CMMNEdge@cmmnElementRef": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: the reference points at an ID that no element in the file has; it is reported as an import warning (unresolved reference) and dropped on save"
     },
     "dropped-attribute cmmndi:CMMNEdge@targetCMMNElementRef": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
+      "issue": "https://github.com/jylups/cmmn-js-env/issues/20",
+      "note": "Accepted: the reference points at an ID that no element in the file has; it is reported as an import warning (unresolved reference) and dropped on save"
     },
     "dropped-attribute cmmn:processTask@flowable:fallbackToDefaultTenant": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/44",
