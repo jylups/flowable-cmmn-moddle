@@ -1,0 +1,1 @@
+<sentry xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn" id="Sentry_1" flowable:triggerMode="onEvent" />

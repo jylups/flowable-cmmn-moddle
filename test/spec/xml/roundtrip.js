@@ -62,6 +62,25 @@ describe('import -> export roundtrip', function() {
     });
 
 
+    describe('of stages, milestones, repetition rules and sentries', function() {
+
+      function validatePart(name, typeName) {
+        return validateExport('test/fixtures/xml/' + name + '.part.cmmn', typeName);
+      }
+
+      it('stage', validatePart('stage-flowable-overview', 'cmmn:Stage'));
+
+      it('milestone', validatePart('milestone-flowable-overview', 'cmmn:Milestone'));
+
+      it('repetition rule', validatePart('repetitionRule-flowable-collection', 'cmmn:RepetitionRule'));
+
+      it('sentry', validatePart('sentry-flowable-triggerMode', 'cmmn:Sentry'));
+
+      it('exit criterion', validatePart('exitCriterion-flowable-exitType', 'cmmn:ExitCriterion'));
+
+    });
+
+
     describe('of tasks', function() {
 
       function validateTask(name, typeName) {
