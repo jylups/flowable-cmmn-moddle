@@ -434,6 +434,34 @@ describe('read', function() {
         });
       });
 
+
+      it('with nested expression and string in the CMMN namespace', function() {
+
+        // given
+        var xml = readFile('test/fixtures/xml/flowable-field-cmmn-children.part.cmmn');
+
+        // when
+        return moddle.fromXML(xml, 'flowable:Field').then(function(result) {
+          var field = result.rootElement;
+
+          // then
+          expect(result.warnings).to.be.empty;
+
+          expect(field).to.jsonEqual({
+            $type: 'flowable:Field',
+            name: 'html',
+            cmmnExpression: {
+              $type: 'cmmn:Expression',
+              body: '${greeting + name}'
+            },
+            cmmnString: {
+              $type: 'cmmn:String',
+              body: '42 is the answer!'
+            }
+          });
+        });
+      });
+
     });
 
 

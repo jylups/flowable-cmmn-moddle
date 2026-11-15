@@ -57,6 +57,9 @@ describe('import -> export roundtrip', function() {
     it('expression and stringValue attributes', validateExport(
       'test/fixtures/xml/flowable-field-expression-attribute.part.cmmn', 'flowable:Field'));
 
+    it('expression and string children in the CMMN namespace', validateExport(
+      'test/fixtures/xml/flowable-field-cmmn-children.part.cmmn', 'flowable:Field'));
+
   });
 
 });

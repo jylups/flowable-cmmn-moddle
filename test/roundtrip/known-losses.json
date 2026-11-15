@@ -36,9 +36,6 @@
     "dropped-element cmmn:extensionElements > flowable:historyLevel": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
     },
-    "dropped-element flowable:field > cmmn:string": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/17"
-    },
     "dropped-element cmmn:extensionElements > flowable:caseLifecycleListener": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/15"
     },
@@ -86,9 +83,6 @@
     },
     "dropped-element cmmn:extensionElements > flowable:testEntry": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/16"
-    },
-    "dropped-element flowable:field > cmmn:expression": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/17"
     },
     "dropped-element cmmn:extensionElements > flowable:reactivationRule": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/15"

@@ -320,11 +320,30 @@
         {
           "name": "string",
           "type": "String"
+        },
+        {
+          "name": "cmmnExpression",
+          "type": "cmmn:Expression"
+        },
+        {
+          "name": "cmmnString",
+          "type": "cmmn:String"
         }
       ]
     },
     {
       "name": "Expression",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "cmmn:String",
       "superClass": [ "Element" ],
       "properties": [
         {
