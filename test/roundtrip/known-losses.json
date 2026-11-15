@@ -3,9 +3,6 @@
     "dropped-element cmmn:exitCriterion > cmmn:planItemOnPart": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
     },
-    "dropped-attribute cmmn:task@flowable:fromKey": {
-      "issue": "https://github.com/jylups/cmmn-js-env/issues/43"
-    },
     "dropped-attribute cmmndi:CMMNShape@cmmnElementRef": {
       "issue": "https://github.com/jylups/cmmn-js-env/issues/20"
     },
