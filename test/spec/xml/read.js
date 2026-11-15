@@ -828,6 +828,24 @@ describe('read', function() {
       });
 
 
+      it('in and out parameters with types, expressions and transient', function() {
+
+        return readExtensions(
+          '<flowable:in source="amount" target="childAmount" sourceType="string" targetType="integer" />' +
+          '<flowable:in sourceExpression="${order.id}" targetExpression="${child.orderId}" />' +
+          '<flowable:out source="result" target="childResult" transient="true" />'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            { $type: 'flowable:In', source: 'amount', target: 'childAmount', sourceType: 'string', targetType: 'integer' },
+            { $type: 'flowable:In', sourceExpression: '${order.id}', targetExpression: '${child.orderId}' },
+            { $type: 'flowable:Out', source: 'result', target: 'childResult', 'transient': 'true' }
+          ]);
+        });
+      });
+
+
       it('send event channels', function() {
 
         return readExtensions(

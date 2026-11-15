@@ -64,11 +64,30 @@
         {
           "name": "local",
           "isAttr": true,
-          "type": "Boolean",
-          "default": false
+          "type": "Boolean"
         },
         {
           "name": "businessKey",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "sourceType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetExpression",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "targetType",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "transient",
           "isAttr": true,
           "type": "String"
         }

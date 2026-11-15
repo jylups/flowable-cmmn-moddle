@@ -108,6 +108,8 @@ describe('import -> export roundtrip', function() {
 
     it('send event channels', validateExtensions('flowable-send-event'));
 
+    it('in and out parameters with types, expressions and transient', validateExtensions('flowable-in-out-types'));
+
     it('script listeners in the Flowable form', validateExtensions('flowable-script-listeners'));
 
     it('external worker parameters, HTTP handlers and element name',
