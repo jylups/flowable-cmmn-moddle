@@ -1,0 +1,8 @@
+<cmmn:extensionElements xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:taskListener event="assignment" type="script">
+    <flowable:script language="javascript" resultVariable="javascriptResult">task.setVariable('javaScriptVariable', 'setInJavaScript');</flowable:script>
+  </flowable:taskListener>
+  <flowable:planItemLifecycleListener type="script" targetState="active">
+    <flowable:script language="groovy">planItemInstance.setVariable('started', true)</flowable:script>
+  </flowable:planItemLifecycleListener>
+</cmmn:extensionElements>
