@@ -1,0 +1,6 @@
+<extensionElements xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:eventType>orderShipped</flowable:eventType>
+  <flowable:channelKey>orderChannel,${extraChannel}</flowable:channelKey>
+  <flowable:systemChannel />
+  <flowable:eventInParameter source="${orderId}" target="orderId" />
+</extensionElements>

@@ -47,6 +47,21 @@ describe('import -> export roundtrip', function() {
     it('flowable:VariableOnPart', validateExport('test/fixtures/xml/sentry-flowable-variable-on-part.cmmn'));
 
 
+    describe('of event listeners', function() {
+
+      function validateListener(name, typeName) {
+        return validateExport('test/fixtures/xml/' + name + '.part.cmmn', typeName);
+      }
+
+      it('variable event listener', validateListener('eventListener-flowable-variable', 'cmmn:EventListener'));
+
+      it('signal event listener', validateListener('eventListener-flowable-signal', 'cmmn:EventListener'));
+
+      it('user event listener', validateListener('userEventListener-flowable-availableCondition', 'cmmn:UserEventListener'));
+
+    });
+
+
     describe('of tasks', function() {
 
       function validateTask(name, typeName) {
@@ -90,6 +105,8 @@ describe('import -> export roundtrip', function() {
     it('item control rules', validateExtensions('flowable-item-control-rules'));
 
     it('event registry', validateExtensions('flowable-event-registry'));
+
+    it('send event channels', validateExtensions('flowable-send-event'));
 
     it('external worker parameters, HTTP handlers and element name',
       validateExtensions('flowable-external-worker-and-http'));

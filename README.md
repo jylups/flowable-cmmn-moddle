@@ -139,11 +139,22 @@ Saving keeps these attributes as written: none of them has a default, since Flow
 - `flowable:reactivationRule` - Reactivation rule (`activateCondition`, `ignoreCondition`, `defaultCondition`)
 - `flowable:defaultReactivationRule` - Default reactivation rule of a reactivation event listener
 
+### Event Listeners
+On every event listener (`cmmn:eventListener`, `cmmn:userEventListener`, `cmmn:timerEventListener`):
+- `flowable:availableCondition` - Expression that makes the event listener available
+
+On a `cmmn:eventListener`:
+- `flowable:eventType` - The kind of event listener: `signal`, `variable`, `intent` or `reactivate`; without it, an event listener waits for the event registry event of its `<flowable:eventType>` extension element
+- `flowable:signalRef` - Signal of a signal event listener
+- `flowable:variableName`, `flowable:variableChangeType` - Variable of a variable event listener, and the change it waits for (`all`, `create`, `update`, `update-create`, `delete`)
+
 ### Event Registry
 - `flowable:eventType` - Event type of a case, an event listener or a send event task
 - `flowable:startEventCorrelationConfiguration` - Correlation configuration of a case started by an event
 - `flowable:eventCorrelationParameter` - Correlation parameter (`name`, `value`)
 - `flowable:eventInParameter`, `flowable:eventOutParameter` - Event payload mapping (`source`, `sourceExpression`, `target`, `targetExpression`, `transient`, ...)
+- `flowable:channelKey` - Channels a send event task sends on, comma separated or an expression
+- `flowable:systemChannel` - Also send the event on the system channel
 
 ### External Worker and HTTP Tasks
 - `flowable:externalWorkerInParameter`, `flowable:externalWorkerOutParameter` - External worker variable mapping
