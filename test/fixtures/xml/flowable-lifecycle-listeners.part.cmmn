@@ -1,0 +1,8 @@
+<cmmn:extensionElements xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:planItemLifecycleListener class="org.example.Listener" sourceState="available" targetState="active" />
+  <flowable:planItemLifecycleListener expression="${listenerBean.done(planItemInstance)}" targetState="completed" onTransaction="committed" />
+  <flowable:planItemLifecycleListener delegateExpression="${listener}" targetState="active">
+    <flowable:field name="greeting" stringValue="hello" />
+  </flowable:planItemLifecycleListener>
+  <flowable:caseLifecycleListener class="org.example.CaseListener" sourceState="active" targetState="completed" />
+</cmmn:extensionElements>

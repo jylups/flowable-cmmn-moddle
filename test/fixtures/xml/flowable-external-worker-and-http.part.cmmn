@@ -1,0 +1,8 @@
+<cmmn:extensionElements xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:externalWorkerInParameter source="name" target="workerName" />
+  <flowable:externalWorkerInParameter sourceExpression="${amount * 2}" target="doubled" />
+  <flowable:externalWorkerOutParameter source="result" target="workerResult" />
+  <flowable:httpRequestHandler class="org.example.RequestHandler" />
+  <flowable:httpResponseHandler delegateExpression="${responseHandler}" />
+  <flowable:element-name>Review the claim</flowable:element-name>
+</cmmn:extensionElements>

@@ -1,0 +1,8 @@
+<cmmn:extensionElements xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:flowable="http://flowable.org/cmmn">
+  <flowable:completionNeutralRule id="rule1" name="Neutral">
+    <cmmn:condition>${neutral}</cmmn:condition>
+  </flowable:completionNeutralRule>
+  <flowable:parentCompletionRule type="ignoreAfterFirstCompletion" />
+  <flowable:reactivationRule activateCondition="${reactivate}" ignoreCondition="${ignore}" defaultCondition="${default}" />
+  <flowable:defaultReactivationRule ignoreCondition="true" />
+</cmmn:extensionElements>
