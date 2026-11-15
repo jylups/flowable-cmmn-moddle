@@ -49,6 +49,14 @@ describe('import -> export roundtrip', function() {
   });
 
 
+  describe('should keep flowable DI extensions', function() {
+
+    it('flowable:docker', validateExport(
+      'test/fixtures/xml/di-extension-flowable-docker.part.cmmn', 'di:Extension'));
+
+  });
+
+
   describe('should keep the form of flowable:field values', function() {
 
     it('expression and string children', validateExport(
