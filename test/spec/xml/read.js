@@ -272,6 +272,40 @@ describe('read', function() {
     });
 
 
+    it('case and case plan model attributes, and the rotation of a label', function() {
+
+      // given
+      var xml = readFile('test/fixtures/xml/case-flowable-start.cmmn');
+
+      // when
+      return moddle.fromXML(xml, 'cmmn:Definitions').then(function(result) {
+
+        var definitions = result.rootElement,
+            caze = definitions.get('cases')[0],
+            casePlanModel = caze.get('casePlanModel'),
+            label = definitions.get('CMMNDI').get('diagrams')[0].get('diagramElements')[1].get('label');
+
+        // then
+        // the rotation of a label stays an unknown attribute: a type extending
+        // cmmndi:CMMNLabel would make moddle write every label as <cmmndi:cMMNLabel>
+        expect(result.warnings.map(function(warning) {
+          return warning.message;
+        })).to.eql([ 'unknown attribute <flowable:rotation>' ]);
+
+        expect(caze.get('flowable:async')).to.be.true;
+        expect(caze.get('flowable:initiatorVariableName')).to.eql('initiator');
+        expect(caze.get('flowable:candidateStarterUsers')).to.eql('kermit,fozzie');
+        expect(caze.get('flowable:candidateStarterGroups')).to.eql('sales');
+
+        expect(casePlanModel.get('flowable:formKey')).to.eql('orderForm');
+        expect(casePlanModel.get('flowable:formFieldValidation')).to.eql('false');
+        expect(casePlanModel.get('flowable:sameDeployment')).to.be.false;
+
+        expect(label.$attrs['flowable:rotation']).to.eql('45.0');
+      });
+    });
+
+
     describe('stage, milestone, repetition rule and sentry attributes', function() {
 
       function read(name, typeName) {
