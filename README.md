@@ -57,7 +57,13 @@ This package extends the CMMN 1.1 meta-model with Flowable-specific elements and
 ### Case Elements
 - `flowable:historyTimeToLive` - Set history time to live for cases
 - `flowable:initiatorVariableName` - Define initiator variable name
-- `flowable:candidateStarterGroups` - Set candidate starter groups
+- `flowable:candidateStarterUsers`, `flowable:candidateStarterGroups` - Users and groups who may start the case, comma separated
+- `flowable:async` - `true` to start the case asynchronously
+
+### Case Plan Model
+- `flowable:formKey` - Start form of the case
+- `flowable:formFieldValidation` - Whether the fields of the start form are validated
+- `flowable:sameDeployment` - `false` to take the start form from any deployment, not only the case's own
 
 ### Tasks
 On every task (`cmmn:task`, `cmmn:humanTask`, `cmmn:caseTask`, `cmmn:processTask` and `cmmn:decisionTask`):
@@ -188,6 +194,7 @@ Other `flowable:*` extension elements, such as the Flowable modeler's `flowable:
 
 ### Diagram Interchange
 - `flowable:docker` - In the `di:extension` of a `cmmndi:CMMNEdge`: the point where the connection attaches to its source or target shape (`type` is `source` or `target`, `x` and `y` are relative to the shape's top left corner). The Flowable modeler writes them; cmmn-js keeps them as they were read and does not update them when shapes or connections change, and adds none to new connections.
+- `flowable:rotation` - Rotation of a `cmmndi:CMMNLabel`, in degrees. It is kept on save as an unknown attribute, with an import warning: a type extending `cmmndi:CMMNLabel` would make moddle write every label as `cmmndi:cMMNLabel`, since the extending package lower-cases tag names. cmmn-js draws labels unrotated.
 
 ## CMMN XML Namespace
 

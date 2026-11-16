@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:flowable="http://flowable.org/cmmn" id="Definitions_1" targetNamespace="http://flowable.org/cmmn">
+  <cmmn:case id="Case_1" name="Order" flowable:initiatorVariableName="initiator" flowable:candidateStarterUsers="kermit,fozzie" flowable:candidateStarterGroups="sales" flowable:async="true">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="Plan" flowable:formKey="orderForm" flowable:formFieldValidation="false" flowable:sameDeployment="false">
+      <cmmn:planItem id="PlanItem_1" definitionRef="Task_1" />
+      <cmmn:task id="Task_1" name="Check" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="CMMNDiagram_1">
+      <cmmndi:CMMNShape id="CMMNShape_CasePlanModel_1" cmmnElementRef="CasePlanModel_1">
+        <dc:Bounds x="20" y="20" width="400" height="250" />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="CMMNShape_PlanItem_1" cmmnElementRef="PlanItem_1">
+        <dc:Bounds x="100" y="100" width="100" height="80" />
+        <cmmndi:CMMNLabel flowable:rotation="45.0">
+          <dc:Bounds x="100" y="190" width="60" height="20" />
+        </cmmndi:CMMNLabel>
+      </cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>
