@@ -120,7 +120,7 @@ Saving keeps these attributes as written: none of them has a default, since Flow
 
 ### Listeners
 - `flowable:caseExecutionListener` - Case execution listeners
-- `flowable:taskListener` - Task listeners  
+- `flowable:taskListener` - Task listeners, with `onTransaction` (`committed`, `rolled-back` or `before-commit`)
 - `flowable:variableListener` - Variable listeners
 
 A listener has a `class`, `expression` or `delegateExpression`, or `type="script"` with a `<flowable:script>` child: `language`, an optional `resultVariable`, and the script as its text. Flowable runs the script only with `type="script"`; `scriptFormat` and `resource` of `<flowable:script>` are kept for models written in the Camunda form.
@@ -192,6 +192,13 @@ On a `cmmn:eventListener`:
 
 ### Elements Without a Type
 Other `flowable:*` extension elements, such as the Flowable modeler's `flowable:work-form-field-validation` or custom extension elements, are kept as generic elements with their attributes, text and children (with `@jylups/cmmn-moddle` 6.1.0 or later). `flowable:*` attributes without a property are kept as unknown attributes, with an import warning.
+
+### Attributes in Two Spellings
+The Flowable engine reads some attributes whatever their namespace. This package types one spelling of each:
+
+- `flowable:autoComplete` on stages, `flowable:isBlocking` on tasks and `flowable:sentryRef` on criteria share their local name with the CMMN attributes `autoComplete`, `isBlocking` and `sentryRef`, and moddle keys properties by local name, so they cannot be typed next to them. They are kept as unknown attributes, with an import warning; the cmmn-js properties panel reads them and writes the CMMN attribute instead. Hosts can silence the warnings with cmmn-js's `problems.ignoredAttributes`.
+- `eventType`, `signalRef`, `variableName` and `variableChangeType` without a prefix on event listeners are read into the `flowable:` properties and written with the `flowable:` prefix, as Flowable writes them.
+- `authorizedRoleRefs` of a user event listener is a comma list in Flowable and space-separated role references in CMMN. A comma list is kept as written.
 
 ### Diagram Interchange
 - `flowable:docker` - In the `di:extension` of a `cmmndi:CMMNEdge`: the point where the connection attaches to its source or target shape (`type` is `source` or `target`, `x` and `y` are relative to the shape's top left corner). The Flowable modeler writes them; cmmn-js keeps them as they were read and does not update them when shapes or connections change, and adds none to new connections.

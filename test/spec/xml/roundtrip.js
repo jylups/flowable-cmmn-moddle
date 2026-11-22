@@ -46,6 +46,9 @@ describe('import -> export roundtrip', function() {
 
     it('flowable:VariableOnPart', validateExport('test/fixtures/xml/sentry-flowable-variable-on-part.cmmn'));
 
+    it('flowable:TaskListener with onTransaction',
+      validateExport('test/fixtures/xml/flowable-taskListener-onTransaction.part.cmmn', 'flowable:TaskListener'));
+
     it('case and case plan model attributes, and the rotation of a label', validateExport('test/fixtures/xml/case-flowable-start.cmmn'));
 
 
