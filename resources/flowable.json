@@ -578,6 +578,13 @@
       "name": "TaskListener",
       "superClass": [
         "Listener"
+      ],
+      "properties": [
+        {
+          "name": "onTransaction",
+          "isAttr": true,
+          "type": "String"
+        }
       ]
     },
     {

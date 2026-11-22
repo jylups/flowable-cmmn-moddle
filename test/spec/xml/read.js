@@ -715,6 +715,7 @@ describe('read', function() {
           expect(executionListener).to.jsonEqual({
             $type: 'flowable:TaskListener',
             event: 'create',
+            onTransaction: 'committed',
             'class': 'my.company.Listener',
             delegateExpression: '${myTaskListener}',
             expression: '${myTaskListener.notify(task, task.eventName)}'
