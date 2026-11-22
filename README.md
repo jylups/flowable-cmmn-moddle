@@ -188,6 +188,7 @@ On a `cmmn:eventListener`:
 - `flowable:variableAggregation` - Variable aggregation of a repetition rule, with `<variable>` children in the CMMN namespace
 - `flowable:condition` - Condition built in the Flowable modeler, with nested conditions
 - `flowable:element-name` - Name of an element with line breaks
+- `flowable:jobCategory` - Category of the jobs of a plan item (asynchronous continuations, external worker jobs)
 
 ### Elements Without a Type
 Other `flowable:*` extension elements, such as the Flowable modeler's `flowable:work-form-field-validation` or custom extension elements, are kept as generic elements with their attributes, text and children (with `@jylups/cmmn-moddle` 6.1.0 or later). `flowable:*` attributes without a property are kept as unknown attributes, with an import warning.

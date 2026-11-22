@@ -852,6 +852,17 @@
       ]
     },
     {
+      "name": "JobCategory",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "body",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
       "name": "SystemChannel",
       "superClass": [ "Element" ]
     },
