@@ -1006,6 +1006,20 @@ describe('read', function() {
       });
 
 
+      it('job category', function() {
+
+        return readExtensions(
+          '<flowable:jobCategory>orders</flowable:jobCategory>'
+        ).then(function(values) {
+
+          // then
+          expect(values).to.jsonEqual([
+            { $type: 'flowable:JobCategory', body: 'orders' }
+          ]);
+        });
+      });
+
+
       it('nested conditions and element-name', function() {
 
         return readExtensions(
